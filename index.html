@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>3:17 — An Original Digital Thriller</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #030407;
+            color: #f4f4f5;
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    circle at 78% 28%,
+                    rgba(75, 82, 150, 0.13),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(40, 45, 100, 0.12),
+                    transparent 25%
+                );
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.012) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.012) 1px,
+                    transparent 1px
+                );
+            background-size: 80px 80px;
+            opacity: .25;
+            z-index: -1;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            height: 122px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 44px;
+
+            position: sticky;
+            top: 0;
+
+            background: rgba(3,4,7,0.82);
+            backdrop-filter: blur(18px);
+
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #77777e;
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 46px;
+        }
+
+        nav a {
+            color: #96969d;
+            font-size: 18px;
+            font-weight: 500;
+            transition: .25s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -9px;
+            width: 0;
+            height: 1px;
+            background: white;
+            transition: .25s ease;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: calc(100vh - 122px);
+
+            padding: 66px 62px 80px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: min(760px, 100%);
+            position: relative;
+            z-index: 3;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+
+            color: #74747b;
+
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 4px;
+
+            margin-bottom: 36px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 57px;
+            height: 1px;
+            background: #6d6d73;
+        }
+
+        .time {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(130px, 17vw, 245px);
+            line-height: .72;
+
+            font-weight: 700;
+            letter-spacing: -15px;
+
+            color: #f5f5f5;
+
+            margin-left: -5px;
+        }
+
+        .am {
+            font-family: "Space Grotesk", sans-serif;
+
+            font-size: clamp(110px, 14vw, 205px);
+            line-height: .8;
+
+            font-weight: 400;
+            letter-spacing: -9px;
+
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,.22);
+
+            margin-left: 105px;
+            margin-top: 17px;
+        }
+
+        .description {
+            max-width: 720px;
+
+            color: #96969d;
+
+            font-size: 21px;
+            line-height: 1.65;
+
+            margin-top: 72px;
+        }
+
+        .description strong {
+            color: #f3f3f4;
+            font-weight: 600;
+        }
+
+        /* =========================
+           TAGS
+        ========================= */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            margin-top: 36px;
+        }
+
+        .tag {
+            border: 1px solid rgba(255,255,255,.13);
+
+            border-radius: 50px;
+
+            padding: 12px 19px;
+
+            color: #898990;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 1.2px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+
+            margin-top: 52px;
+        }
+
+        .primary-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 28px;
+
+            background: #f4f4f5;
+            color: #050507;
+
+            padding: 20px 30px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            letter-spacing: 1.8px;
+
+            transition: .3s ease;
+        }
+
+        .primary-button span {
+            font-size: 22px;
+            transition: .3s ease;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        .primary-button:hover span {
+            transform: translateX(5px);
+        }
+
+        .explore-button {
+            color: #77777e;
+
+            font-size: 15px;
+            font-weight: 500;
+
+            padding-bottom: 8px;
+
+            border-bottom: 1px solid rgba(255,255,255,.16);
+
+            transition: .25s ease;
+        }
+
+        .explore-button:hover {
+            color: white;
+            border-color: white;
+        }
+
+        /* =========================
+           PHONE VISUAL
+        ========================= */
+
+        .hero-visual {
+            position: absolute;
+
+            right: 6%;
+            top: 18%;
+
+            width: 360px;
+            height: 650px;
+
+            border-radius: 45px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(26,29,45,.8),
+                    rgba(7,8,13,.92)
+                );
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            box-shadow:
+                -30px 40px 100px rgba(0,0,0,.8),
+                inset 0 0 50px rgba(70,80,160,.05);
+
+            transform: rotate(7deg);
+
+            opacity: .75;
+        }
+
+        .hero-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 105px;
+            height: 23px;
+
+            top: 15px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border-radius: 20px;
+
+            background: #010102;
+        }
+
+        .phone-time {
+            position: absolute;
+
+            top: 120px;
+            left: 35px;
+
+            font-family: "Space Grotesk";
+
+            font-size: 72px;
+            font-weight: 600;
+
+            color: white;
+        }
+
+        .phone-date {
+            position: absolute;
+
+            top: 200px;
+            left: 38px;
+
+            color: #73747b;
+
+            font-size: 14px;
+        }
+
+        .phone-message {
+            position: absolute;
+
+            left: 25px;
+            right: 25px;
+            bottom: 80px;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background: rgba(30,32,42,.72);
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .phone-message small {
+            color: #686971;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .phone-message p {
+            color: #d9d9dc;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            scroll-margin-top: 120px;
+        }
+
+        .section {
+            padding: 130px 62px;
+            border-top: 1px solid rgba(255,255,255,.06);
+        }
+
+        .section-label {
+            color: #66666d;
+            font-size: 13px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-family: "Space Grotesk";
+            font-size: clamp(42px, 6vw, 76px);
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .section-description {
+            color: #85858c;
+            max-width: 680px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           STORY SECTION
+        ========================= */
+
+        .story-grid {
+            margin-top: 65px;
+
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .story-copy {
+            color: #9a9aa1;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .story-copy p + p {
+            margin-top: 22px;
+        }
+
+        .story-highlight {
+            border-left: 1px solid rgba(255,255,255,.2);
+            padding-left: 35px;
+        }
+
+        .story-highlight span {
+            display: block;
+            color: #5f6068;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .story-highlight h3 {
+            font-family: "Space Grotesk";
+            font-size: 31px;
+            line-height: 1.25;
+            font-weight: 500;
+        }
+
+        /* =========================
+           CHAPTERS
+        ========================= */
+
+        .chapter-grid {
+            margin-top: 65px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .chapter-card {
+            min-height: 300px;
+
+            padding: 32px;
+
+            border: 1px solid rgba(255,255,255,.09);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.035),
+                    rgba(255,255,255,.008)
+                );
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition: .35s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(255,255,255,.22);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.012)
+                );
+        }
+
+        .chapter-number {
+            color: #62636a;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .chapter-card h3 {
+            font-family: "Space Grotesk";
+            font-size: 32px;
+            line-height: 1.1;
+            margin-top: 12px;
+        }
+
+        .chapter-card p {
+            color: #777880;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .chapter-link {
+            margin-top: 30px;
+
+            color: #f0f0f1;
+
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .coming {
+            opacity: .42;
+        }
+
+        .coming:hover {
+            transform: none;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-box {
+            margin-top: 60px;
+
+            max-width: 900px;
+
+            padding: 45px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            background: rgba(255,255,255,.015);
+        }
+
+        .about-box p {
+            color: #919198;
+
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+        .about-box p + p {
+            margin-top: 25px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.07);
+
+            padding: 45px 62px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            color: #5e5f66;
+
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #898990;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .hero-visual {
+                opacity: .25;
+                right: -80px;
+            }
+
+            .chapter-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                height: 82px;
+                padding: 0 22px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 70px 25px 90px;
+            }
+
+            .eyebrow {
+                font-size: 11px;
+                letter-spacing: 2.5px;
+            }
+
+            .time {
+                font-size: 110px;
+                letter-spacing: -8px;
+            }
+
+            .am {
+                font-size: 95px;
+                letter-spacing: -6px;
+                margin-left: 45px;
+            }
+
+            .description {
+                font-size: 17px;
+                margin-top: 55px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .section {
+                padding: 90px 25px;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 35px 25px;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            3<span>/</span>17
+        </a>
+
+        <nav>
+            <a href="#story">Story</a>
+            <a href="#chapters">Chapters</a>
+            <a href="#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    AN ORIGINAL DIGITAL THRILLER
+                </div>
+
+                <div class="time">
+                    3:17
+                </div>
+
+                <div class="am">
+                    AM.
+                </div>
+
+                <p class="description">
+                    Nyla's phone unlocked by itself.
+                    Then <strong>her own account</strong> sent her a
+                    message. The message knew something she hadn't
+                    told anyone.
+                </p>
+
+                <div class="tags">
+                    <span class="tag">PSYCHOLOGICAL</span>
+                    <span class="tag">MYSTERY</span>
+                    <span class="tag">HORROR</span>
+                    <span class="tag">DIGITAL THRILLER</span>
+                </div>
+
+                <div class="hero-buttons">
+
+                    <a href="chapter1.html" class="primary-button">
+                        START READING
+                        <span>→</span>
+                    </a>
+
+                    <a href="#story" class="explore-button">
+                        EXPLORE STORY
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="hero-visual">
+
+                <div class="phone-time">
+                    3:17
+                </div>
+
+                <div class="phone-date">
+                    THURSDAY · 17
+                </div>
+
+                <div class="phone-message">
+
+                    <small>
+                        @nyla.jpg
+                    </small>
+
+                    <p>
+                        don't look behind you.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STORY
+        ========================= -->
+
+        <section class="section" id="story">
+
+            <div class="section-label">
+                THE STORY
+            </div>
+
+            <h2 class="section-title">
+                Something is wrong.
+            </h2>
+
+            <p class="section-description">
+                It started with a phone that unlocked itself.
+                Then came the messages. Then the photographs.
+                And eventually, Nyla realized someone was using
+                her identity better than she was.
+            </p>
+
+
+            <div class="story-grid">
+
+                <div class="story-copy">
+
+                    <p>
+                        Nyla is twenty, permanently online, and
+                        absolutely convinced she knows her own life.
+                    </p>
+
+                    <p>
+                        Until one night, at exactly 3:17 AM,
+                        her phone receives a message from an account
+                        that shouldn't exist.
+                    </p>
+
+                    <p>
+                        The username is hers.
+                        The profile picture is hers.
+                        And whoever is behind it knows what happens
+                        next.
+                    </p>
+
+                </div>
+
+
+                <div class="story-highlight">
+
+                    <span>
+                        THE FIRST RULE
+                    </span>
+
+                    <h3>
+                        If your own account messages you...
+                        don't answer.
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CHAPTERS
+        ========================= -->
+
+        <section class="section" id="chapters">
+
+            <div class="section-label">
+                THE STORY SO FAR
+            </div>
+
+            <h2 class="section-title">
+                Chapters.
+            </h2>
+
+            <p class="section-description">
+                Read the story from the beginning.
+                New chapters will appear here as the mystery gets deeper.
+            </p>
+
+
+            <div class="chapter-grid">
+
+
+                <!-- CHAPTER 1 -->
+
+                <a href="chapter1.html" class="chapter-card">
+
+                    <div>
+
+                        <div class="chapter-number">
+                            CHAPTER 01
+                        </div>
+
+                        <h3>
+                            Someone<br>
+                            Logged In.
+                        </h3>
+
+                        <p>
+                            Nyla's phone unlocks by itself.
+                            Then a message arrives from her own account.
+                        </p>
+
+                    </div>
+
+                    <div class="chapter-link">
+                        READ CHAPTER →
+                    </div>
+
+                </a>
+
+
+                <!-- CHAPTER 2 -->
+
+                <a href="chapter2.html" class="chapter-card">
+
+                    <div>
+
+                        <div class="chapter-number">
+                            CHAPTER 02
+                        </div>
+
+                        <h3>
+                            Don't<br>
+                            Open It.
+                        </h3>
+
+                        <p>
+                            Someone knocks.
+                            Aanya tells Nyla not to open the door.
+                            But someone is already inside.
+                        </p>
+
+                    </div>
+
+                    <div class="chapter-link">
+                        READ CHAPTER →
+                    </div>
+
+                </a>
+
+
+                <!-- CHAPTER 3 -->
+
+                <div class="chapter-card coming">
+
+                    <div>
+
+                        <div class="chapter-number">
+                            CHAPTER 03
+                        </div>
+
+                        <h3>
+                            Coming<br>
+                            Soon.
+                        </h3>
+
+                        <p>
+                            The story continues.
+                            But Nyla is starting to remember something
+                            she was never supposed to know.
+                        </p>
+
+                    </div>
+
+                    <div class="chapter-link">
+                        LOCKED
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================= -->
+
+        <section class="section" id="about">
+
+            <div class="section-label">
+                ABOUT 3:17
+            </div>
+
+            <h2 class="section-title">
+                Not every<br>
+                screen tells the truth.
+            </h2>
+
+            <p class="section-description">
+                3:17 is an original psychological horror story
+                built around one question:
+                what happens when your digital identity knows you
+                better than you know yourself?
+            </p>
+
+
+            <div class="about-box">
+
+                <p>
+                    This isn't just a story about a haunted phone.
+                    It's about identity, memory, social media,
+                    and the uncomfortable feeling that something
+                    online might be watching you.
+                </p>
+
+                <p>
+                    Read carefully.
+                    Some details may matter later.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div>
+            <strong>3 / 17</strong>
+            &nbsp; · &nbsp;
+            An Original Digital Thriller
+        </div>
+
+        <div>
+            Something is wrong.
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /* =========================
+           NAVIGATION EFFECT
+        ========================= */
+
+        const navLinks = document.querySelectorAll("nav a");
+
+        navLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.forEach(item => {
+                    item.style.color = "";
+                });
+
+                link.style.color = "#ffffff";
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

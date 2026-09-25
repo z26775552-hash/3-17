@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>3:17 — Chapter 1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#07080b;
+    color:#eeeeee;
+    font-family:"DM Sans",sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:999;
+    opacity:.035;
+
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.8) 0px,
+        rgba(255,255,255,.8) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    top:-250px;
+    right:-200px;
+    border-radius:50%;
+    background:rgba(80,90,130,.07);
+    filter:blur(100px);
+    pointer-events:none;
+}
+
+/* TOP BAR */
+
+.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 7%;
+
+    background:rgba(7,8,11,.78);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.07);
+
+    z-index:100;
+}
+
+.logo{
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.chapter-label{
+    font-size:11px;
+    letter-spacing:2px;
+    color:#777b84;
+}
+
+/* PROGRESS */
+
+.progress{
+    position:fixed;
+    top:69px;
+    left:0;
+    width:100%;
+    height:2px;
+    background:#15171d;
+    z-index:100;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:#e8e8e8;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:180px 8% 100px;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.chapter-number{
+    font-size:11px;
+    letter-spacing:4px;
+    color:#737781;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(65px,10vw,150px);
+    line-height:.9;
+    letter-spacing:-6px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.hero h1 span{
+    color:#676b74;
+}
+
+.hero-description{
+    max-width:580px;
+    font-size:17px;
+    color:#a3a6ae;
+}
+
+.warning{
+    margin-top:55px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:10px;
+    letter-spacing:3px;
+    color:#777b84;
+}
+
+.warning-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#d5d5d5;
+    box-shadow:0 0 12px rgba(255,255,255,.5);
+}
+
+/* STORY */
+
+.story{
+    max-width:850px;
+    margin:auto;
+    padding:100px 8%;
+}
+
+.time{
+    font-size:11px;
+    letter-spacing:4px;
+    color:#666a73;
+    margin-bottom:22px;
+}
+
+.story h2{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:40px;
+    line-height:1.15;
+    margin-bottom:35px;
+}
+
+.story p{
+    color:#aeb1b8;
+    font-size:17px;
+    margin-bottom:28px;
+}
+
+.story p strong{
+    color:#f0f0f0;
+    font-weight:500;
+}
+
+/* DIALOGUE */
+
+.dialogue{
+    margin:45px 0;
+    padding:28px 30px;
+
+    border-left:1px solid #555a65;
+
+    background:rgba(255,255,255,.025);
+}
+
+.dialogue .name{
+    font-size:10px;
+    letter-spacing:3px;
+    color:#70747d;
+    margin-bottom:10px;
+}
+
+.dialogue p{
+    margin:0;
+    color:#dedfe2;
+}
+
+/* PHONE */
+
+.phone-section{
+    margin:80px 0;
+    display:flex;
+    justify-content:center;
+}
+
+.phone{
+    width:270px;
+    min-height:500px;
+
+    border:8px solid #16181e;
+    border-radius:35px;
+
+    background:#0c0e13;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6),
+        inset 0 0 30px rgba(255,255,255,.02);
+
+    overflow:hidden;
+}
+
+.phone-top{
+    height:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.notch{
+    width:80px;
+    height:18px;
+    border-radius:0 0 12px 12px;
+    background:#050609;
+}
+
+.phone-screen{
+    padding:25px 18px;
+}
+
+.phone-time{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:55px;
+    letter-spacing:-3px;
+    margin-bottom:30px;
+}
+
+.notification{
+    padding:15px;
+
+    background:#171a21;
+    border-radius:14px;
+
+    margin-bottom:12px;
+}
+
+.notification small{
+    color:#777b84;
+    font-size:10px;
+}
+
+.notification strong{
+    display:block;
+    margin-top:5px;
+    font-size:13px;
+}
+
+.chat-message{
+    padding:12px 14px;
+    margin-top:12px;
+
+    border-radius:10px;
+
+    background:#181b22;
+
+    font-size:13px;
+}
+
+.chat-message.mine{
+    background:#252933;
+    margin-left:30px;
+}
+
+/* BIG TEXT */
+
+.big-line{
+    margin:100px 0;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:clamp(35px,6vw,70px);
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    color:#dedfe2;
+}
+
+.big-line span{
+    color:#555a64;
+}
+
+/* ENDING */
+
+.ending{
+    min-height:80vh;
+
+    display:flex;
+    align-items:center;
+
+    padding:100px 8%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.035),
+            transparent 45%
+        );
+}
+
+.ending-inner{
+    max-width:850px;
+}
+
+.ending-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#626670;
+    margin-bottom:25px;
+}
+
+.ending h2{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(45px,7vw,90px);
+    line-height:1;
+    letter-spacing:-4px;
+
+    margin-bottom:50px;
+}
+
+.final-message{
+    padding:35px;
+
+    background:#0c0e13;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    margin-bottom:40px;
+}
+
+.final-message p{
+    margin:8px 0;
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:17px;
+
+    color:#cfd1d6;
+}
+
+/* CHAPTER 2 BUTTON */
+
+.next{
+    display:inline-flex;
+
+    padding:17px 26px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    color:#eeeeee;
+
+    text-decoration:none;
+
+    font-size:11px;
+    letter-spacing:2px;
+
+    background:transparent;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        border .3s ease;
+}
+
+.next:hover{
+    background:#eeeeee;
+    color:#08090b;
+    border-color:#eeeeee;
+}
+
+/* FOOTER */
+
+footer{
+    padding:60px 8%;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    display:flex;
+    justify-content:space-between;
+
+    color:#555962;
+
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+/* FLICKER */
+
+.flicker{
+    animation:flicker 8s infinite;
+}
+
+@keyframes flicker{
+
+    0%,94%,96%,100%{
+        opacity:1;
+    }
+
+    95%{
+        opacity:.25;
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .topbar{
+        padding:0 5%;
+    }
+
+    .chapter-label{
+        display:none;
+    }
+
+    .hero{
+        padding:150px 7% 80px;
+    }
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+
+    .story{
+        padding:80px 7%;
+    }
+
+    .story h2{
+        font-size:32px;
+    }
+
+    .story p{
+        font-size:16px;
+    }
+
+    .phone{
+        width:240px;
+    }
+
+    .ending{
+        padding:80px 7%;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:15px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+    <div class="logo">
+        3:17
+    </div>
+
+    <div class="chapter-label">
+        CHAPTER 01 · SOMEONE LOGGED IN
+    </div>
+
+</header>
+
+
+<!-- READING PROGRESS -->
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="chapter-number">
+            CHAPTER 01 · 01 / 09
+        </div>
+
+        <h1>
+            Someone<br>
+            <span>Logged In.</span>
+        </h1>
+
+        <p class="hero-description">
+            Nyla's phone unlocked by itself.
+            Then her own account sent her a message.
+        </p>
+
+        <div class="warning">
+
+            <span class="warning-dot"></span>
+
+            SOMETHING IS WRONG
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STORY -->
+
+<main class="story">
+
+
+    <!-- CHARACTER INTRO -->
+
+    <div class="time">
+        BEFORE 3:17 AM
+    </div>
+
+    <h2>
+        First, you should know Nyla.
+    </h2>
+
+    <p>
+        Nyla was twenty years old and permanently attached to her phone.
+    </p>
+
+    <p>
+        Not in the cute
+        <strong>"I love taking pictures"</strong>
+        way.
+    </p>
+
+    <p>
+        More like the
+        <strong>"if my phone battery reaches 10%, my entire personality disappears"</strong>
+        way.
+    </p>
+
+    <p>
+        She was a college student who stayed awake far too late,
+        watched random videos when she couldn't sleep,
+        ignored messages for hours,
+        and then replied at three in the morning like nothing had happened.
+    </p>
+
+    <p>
+        Her best friend Aanya called it a problem.
+    </p>
+
+
+    <div class="dialogue">
+
+        <div class="name">
+            AANYA
+        </div>
+
+        <p>
+            "One day you're going to marry that phone."
+        </p>
+
+    </div>
+
+
+    <div class="dialogue">
+
+        <div class="name">
+            NYLA
+        </div>
+
+        <p>
+            "At least my phone doesn't leave me on delivered."
+        </p>
+
+    </div>
+
+
+    <p>
+        That night, Nyla was awake again.
+    </p>
+
+
+    <!-- 11:48 -->
+
+    <div class="time">
+        11:48 PM
+    </div>
+
+    <p>
+        Her room was quiet.
+    </p>
+
+    <p>
+        The fan above her made the same soft clicking sound
+        it had made for months.
+    </p>
+
+    <p>
+        Her laptop was open beside her.
+    </p>
+
+    <p>
+        Her phone was charging on the bed.
+    </p>
+
+    <p>
+        Nothing felt strange.
+    </p>
+
+
+    <!-- 12:06 -->
+
+    <div class="time">
+        12:06 AM
+    </div>
+
+    <p>
+        Nyla finally put her phone down.
+    </p>
+
+    <p>
+        She closed her eyes.
+    </p>
+
+    <p>
+        And tried to sleep.
+    </p>
+
+
+    <div class="big-line">
+
+        She didn't notice<br>
+
+        <span>
+            the screen turn on.
+        </span>
+
+    </div>
+
+
+    <!-- PHONE -->
+
+    <section class="phone-section">
+
+        <div class="phone">
+
+            <div class="phone-top">
+                <div class="notch"></div>
+            </div>
+
+            <div class="phone-screen">
+
+                <div class="phone-time">
+                    3:16
+                </div>
+
+                <div class="notification">
+
+                    <small>
+                        AANYA
+                    </small>
+
+                    <strong>
+                        you awake?
+                    </strong>
+
+                </div>
+
+                <div class="notification">
+
+                    <small>
+                        INSTAGRAM
+                    </small>
+
+                    <strong>
+                        @nyla.jpg sent you a message
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="time">
+        3:16 AM
+    </div>
+
+
+    <p>
+        Nyla's eyes opened.
+    </p>
+
+    <p>
+        Her phone was glowing beside her.
+    </p>
+
+    <p>
+        She hadn't touched it.
+    </p>
+
+    <p>
+        She reached for it.
+    </p>
+
+
+    <p>
+        The screen unlocked.
+    </p>
+
+
+    <p>
+        By itself.
+    </p>
+
+
+    <div class="big-line">
+
+        She stared at the screen.
+
+        <span>
+            Someone was typing.
+        </span>
+
+    </div>
+
+
+    <!-- CHAT -->
+
+    <div class="phone-section">
+
+        <div class="phone">
+
+            <div class="phone-top">
+                <div class="notch"></div>
+            </div>
+
+            <div class="phone-screen">
+
+                <div class="chat-message">
+                    @nyla.jpg
+                </div>
+
+                <div class="chat-message">
+                    hey
+                </div>
+
+                <div class="chat-message">
+                    don't freak out
+                </div>
+
+                <div class="chat-message mine">
+                    who is this?
+                </div>
+
+                <div class="chat-message">
+                    you
+                </div>
+
+                <div class="chat-message">
+                    you're going to hear something in a minute
+                </div>
+
+                <div class="chat-message">
+                    don't answer it.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        Nyla read the last message twice.
+    </p>
+
+    <p>
+        She didn't understand.
+    </p>
+
+    <p>
+        Then she heard it.
+    </p>
+
+
+    <div class="big-line">
+
+        KNOCK.
+        
+        <span>
+            KNOCK.
+        </span>
+
+    </div>
+
+
+    <p class="flicker">
+        Someone was standing outside her bedroom.
+    </p>
+
+
+</main>
+
+
+<!-- ENDING -->
+
+<section class="ending">
+
+    <div class="ending-inner">
+
+        <div class="ending-label">
+            END OF CHAPTER 01
+        </div>
+
+        <h2>
+            Then someone<br>
+            knocked.
+        </h2>
+
+        <div class="final-message">
+
+            <p>
+                Her phone was still in her hand.
+            </p>
+
+            <p>
+                The message was still open.
+            </p>
+
+            <p>
+                And whoever was outside knocked again.
+            </p>
+
+        </div>
+
+
+        <!-- CONNECTED TO CHAPTER 2 -->
+
+        <a href="chapter2.html" class="next">
+            CHAPTER 02 · DON'T OPEN THE DOOR →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        3:17
+    </div>
+
+    <div>
+        A STORY ABOUT WHAT HAPPENS WHEN YOUR PHONE KNOWS YOU BETTER THAN YOU DO.
+    </div>
+
+</footer>
+
+
+<script>
+
+/* READING PROGRESS */
+
+window.addEventListener("scroll", function(){
+
+    const scrollTop = window.scrollY;
+
+    const height =
+        document.documentElement.scrollHeight
+        - window.innerHeight;
+
+    const progress =
+        (scrollTop / height) * 100;
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+});
+
+</script>
+
+
+</body>
+</html>
