@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-site-verification" content="6yWP_PkWY2FvQ2Rxw9o0L86Rqr6iXBMla3fVKtoZvg0" />
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>3:17 — An Original Digital Thriller</title>
+    <title>3:17 AM — A Psychological Horror Story</title>
 
+    <meta name="description" content="3:17 is a psychological horror story about Nyla, a college student whose phone unlocks at 3:16 AM and begins sending messages from her own account.">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="author" content="Zaina">
+
+    <meta name="theme-color" content="#08090c">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="3:17 AM — A Psychological Horror Story">
+    <meta property="og:description" content="Nyla's phone unlocked by itself. Then her own account sent her a message.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="3:17">
+
+    <!-- Twitter / Social Preview -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3:17 AM — A Psychological Horror Story">
+    <meta name="twitter:description" content="Nyla's phone unlocked by itself. Then her own account sent her a message.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
 
@@ -24,15 +46,20 @@
         }
 
         body {
-            background: #030407;
-            color: #f4f4f5;
-            font-family: "DM Sans", sans-serif;
+            background: #08090c;
+            color: #eeeeee;
+            font-family: "Inter", sans-serif;
             overflow-x: hidden;
         }
 
         a {
             color: inherit;
             text-decoration: none;
+        }
+
+        button,
+        input {
+            font-family: inherit;
         }
 
         /* =========================
@@ -46,104 +73,71 @@
             pointer-events: none;
             background:
                 radial-gradient(
-                    circle at 78% 28%,
-                    rgba(75, 82, 150, 0.13),
-                    transparent 28%
+                    circle at 20% 10%,
+                    rgba(120, 120, 120, 0.07),
+                    transparent 30%
                 ),
                 radial-gradient(
-                    circle at 90% 85%,
-                    rgba(40, 45, 100, 0.12),
-                    transparent 25%
+                    circle at 80% 70%,
+                    rgba(255, 255, 255, 0.025),
+                    transparent 30%
                 );
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.012) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.012) 1px,
-                    transparent 1px
-                );
-            background-size: 80px 80px;
-            opacity: .25;
             z-index: -1;
         }
 
         /* =========================
-           NAVBAR
+           HEADER
         ========================= */
 
         header {
-            height: 122px;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 0 44px;
-
-            position: sticky;
-            top: 0;
-
-            background: rgba(3,4,7,0.82);
+            padding: 0 6%;
+            background: rgba(8, 9, 12, 0.72);
             backdrop-filter: blur(18px);
-
-            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 1000;
         }
 
         .logo {
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .logo span {
-            color: #77777e;
-            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 5px;
+            font-weight: 600;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 46px;
+            gap: 34px;
         }
 
         nav a {
-            color: #96969d;
-            font-size: 18px;
-            font-weight: 500;
-            transition: .25s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -9px;
-            width: 0;
-            height: 1px;
-            background: white;
-            transition: .25s ease;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #9a9a9f;
+            transition: 0.3s ease;
         }
 
         nav a:hover {
             color: white;
         }
 
-        nav a:hover::after {
-            width: 100%;
+        .nav-read {
+            padding: 11px 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white !important;
+        }
+
+        .nav-read:hover {
+            background: white;
+            color: black !important;
         }
 
         /* =========================
@@ -151,473 +145,449 @@
         ========================= */
 
         .hero {
-            min-height: calc(100vh - 122px);
-
-            padding: 66px 62px 80px;
-
-            position: relative;
-
+            min-height: 100vh;
+            padding: 170px 7% 90px;
             display: flex;
             align-items: center;
-
-            overflow: hidden;
+            justify-content: space-between;
+            gap: 80px;
+            position: relative;
         }
 
-        .hero-content {
-            width: min(760px, 100%);
-            position: relative;
-            z-index: 3;
+        .hero-left {
+            max-width: 720px;
+            z-index: 2;
         }
 
         .eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 17px;
-
-            color: #74747b;
-
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 11px;
             letter-spacing: 4px;
-
-            margin-bottom: 36px;
+            color: #888890;
+            margin-bottom: 30px;
         }
 
-        .eyebrow::before {
-            content: "";
-            width: 57px;
-            height: 1px;
-            background: #6d6d73;
-        }
-
-        .time {
-            font-family: "Space Grotesk", sans-serif;
-
-            font-size: clamp(130px, 17vw, 245px);
-            line-height: .72;
-
-            font-weight: 700;
-            letter-spacing: -15px;
-
-            color: #f5f5f5;
-
-            margin-left: -5px;
-        }
-
-        .am {
-            font-family: "Space Grotesk", sans-serif;
-
-            font-size: clamp(110px, 14vw, 205px);
-            line-height: .8;
-
+        .hero h1 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(90px, 13vw, 190px);
+            line-height: 0.72;
             font-weight: 400;
-            letter-spacing: -9px;
-
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,.22);
-
-            margin-left: 105px;
-            margin-top: 17px;
+            letter-spacing: -7px;
         }
 
-        .description {
-            max-width: 720px;
-
-            color: #96969d;
-
-            font-size: 21px;
-            line-height: 1.65;
-
-            margin-top: 72px;
+        .hero-time {
+            margin-top: 20px;
+            font-size: 14px;
+            letter-spacing: 9px;
+            color: #77777e;
+            padding-left: 8px;
         }
 
-        .description strong {
-            color: #f3f3f4;
-            font-weight: 600;
+        .hero-description {
+            max-width: 580px;
+            margin-top: 48px;
+            font-size: 17px;
+            line-height: 1.9;
+            color: #a5a5ab;
         }
-
-        /* =========================
-           TAGS
-        ========================= */
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-
-            margin-top: 36px;
+            gap: 10px;
+            margin-top: 28px;
         }
 
         .tag {
-            border: 1px solid rgba(255,255,255,.13);
-
-            border-radius: 50px;
-
-            padding: 12px 19px;
-
-            color: #898990;
-
-            font-size: 13px;
-            font-weight: 600;
-
-            letter-spacing: 1.2px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 13px;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #8c8c92;
         }
-
-        /* =========================
-           BUTTONS
-        ========================= */
 
         .hero-buttons {
             display: flex;
-            align-items: center;
-            gap: 28px;
-
-            margin-top: 52px;
+            gap: 14px;
+            margin-top: 40px;
         }
 
-        .primary-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 28px;
-
-            background: #f4f4f5;
-            color: #050507;
-
-            padding: 20px 30px;
-
-            font-size: 15px;
-            font-weight: 700;
-
-            letter-spacing: 1.8px;
-
-            transition: .3s ease;
+        .btn {
+            padding: 15px 24px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
         }
 
-        .primary-button span {
-            font-size: 22px;
-            transition: .3s ease;
-        }
-
-        .primary-button:hover {
-            transform: translateY(-3px);
+        .btn-primary {
             background: white;
+            color: black;
         }
 
-        .primary-button:hover span {
-            transform: translateX(5px);
+        .btn-primary:hover {
+            background: #cfcfcf;
+            transform: translateY(-2px);
         }
 
-        .explore-button {
-            color: #77777e;
-
-            font-size: 15px;
-            font-weight: 500;
-
-            padding-bottom: 8px;
-
-            border-bottom: 1px solid rgba(255,255,255,.16);
-
-            transition: .25s ease;
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #ddd;
         }
 
-        .explore-button:hover {
-            color: white;
-            border-color: white;
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.06);
         }
 
         /* =========================
-           PHONE VISUAL
+           PHONE
         ========================= */
 
-        .hero-visual {
-            position: absolute;
+        .phone-area {
+            width: 320px;
+            min-width: 320px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
 
-            right: 6%;
-            top: 18%;
-
-            width: 360px;
-            height: 650px;
-
-            border-radius: 45px;
-
+        .phone {
+            width: 230px;
+            height: 460px;
+            border-radius: 34px;
+            border: 1px solid rgba(255,255,255,0.22);
             background:
                 linear-gradient(
                     145deg,
-                    rgba(26,29,45,.8),
-                    rgba(7,8,13,.92)
+                    #181a1f,
+                    #08090b
                 );
-
-            border: 1px solid rgba(255,255,255,.08);
-
             box-shadow:
-                -30px 40px 100px rgba(0,0,0,.8),
-                inset 0 0 50px rgba(70,80,160,.05);
-
-            transform: rotate(7deg);
-
-            opacity: .75;
+                0 50px 100px rgba(0,0,0,0.65),
+                inset 0 0 30px rgba(255,255,255,0.02);
+            padding: 13px;
+            transform: rotate(5deg);
+            position: relative;
         }
 
-        .hero-visual::before {
-            content: "";
-
-            position: absolute;
-
-            width: 105px;
-            height: 23px;
-
-            top: 15px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            border-radius: 20px;
-
-            background: #010102;
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(100,100,100,0.1),
+                    transparent 30%
+                ),
+                #050608;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 32px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .phone-time {
-            position: absolute;
-
-            top: 120px;
-            left: 35px;
-
-            font-family: "Space Grotesk";
-
-            font-size: 72px;
-            font-weight: 600;
-
-            color: white;
-        }
-
-        .phone-date {
-            position: absolute;
-
-            top: 200px;
-            left: 38px;
-
-            color: #73747b;
-
-            font-size: 14px;
+            text-align: center;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 55px;
+            color: #eeeeee;
         }
 
         .phone-message {
-            position: absolute;
-
-            left: 25px;
-            right: 25px;
-            bottom: 80px;
-
-            padding: 20px;
-
-            border-radius: 18px;
-
-            background: rgba(30,32,42,.72);
-
-            border: 1px solid rgba(255,255,255,.08);
-
-            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 18px;
         }
 
         .phone-message small {
-            color: #686971;
             display: block;
-            margin-bottom: 8px;
+            color: #66666d;
+            font-size: 9px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
         .phone-message p {
-            color: #d9d9dc;
-            line-height: 1.5;
+            font-size: 12px;
+            line-height: 1.7;
+            color: #aaaab0;
         }
 
         /* =========================
-           SECTION
+           SECTIONS
         ========================= */
 
         section {
-            scroll-margin-top: 120px;
-        }
-
-        .section {
-            padding: 130px 62px;
-            border-top: 1px solid rgba(255,255,255,.06);
+            padding: 130px 7%;
         }
 
         .section-label {
-            color: #66666d;
-            font-size: 13px;
-            letter-spacing: 3px;
-            font-weight: 700;
-            margin-bottom: 18px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #66666c;
+            margin-bottom: 24px;
         }
 
         .section-title {
-            font-family: "Space Grotesk";
-            font-size: clamp(42px, 6vw, 76px);
-            letter-spacing: -3px;
-            line-height: 1;
-            margin-bottom: 25px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(48px, 6vw, 82px);
+            font-weight: 400;
+            line-height: 0.95;
         }
 
-        .section-description {
-            color: #85858c;
-            max-width: 680px;
-            font-size: 18px;
-            line-height: 1.7;
+        .section-line {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 55px 0;
         }
 
         /* =========================
-           STORY SECTION
+           STORY
         ========================= */
 
+        #story {
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
         .story-grid {
-            margin-top: 65px;
-
             display: grid;
-            grid-template-columns: 1.1fr .9fr;
-
-            gap: 70px;
-
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
         }
 
-        .story-copy {
-            color: #9a9aa1;
-            font-size: 18px;
-            line-height: 1.9;
+        .story-text {
+            color: #9d9da4;
+            font-size: 16px;
+            line-height: 2;
         }
 
-        .story-copy p + p {
-            margin-top: 22px;
+        .story-text p {
+            margin-bottom: 25px;
         }
 
         .story-highlight {
-            border-left: 1px solid rgba(255,255,255,.2);
-            padding-left: 35px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 36px;
+            line-height: 1.3;
+            color: #ddd;
         }
 
-        .story-highlight span {
+        .rule-box {
+            margin-top: 40px;
+            padding: 30px;
+            border-left: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.025);
+        }
+
+        .rule-box span {
             display: block;
-            color: #5f6068;
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: #77777e;
+            margin-bottom: 12px;
         }
 
-        .story-highlight h3 {
-            font-family: "Space Grotesk";
-            font-size: 31px;
-            line-height: 1.25;
-            font-weight: 500;
+        .rule-box strong {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 27px;
+            font-weight: 400;
+        }
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress-card {
+            margin-top: 70px;
+            padding: 25px 28px;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .progress-card span {
+            color: #77777d;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            max-width: 350px;
+            height: 2px;
+            background: #22242a;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #ddd;
+            transition: width 0.5s ease;
         }
 
         /* =========================
            CHAPTERS
         ========================= */
 
-        .chapter-grid {
+        #chapters {
+            background: #0a0b0e;
+        }
+
+        .chapters-intro {
+            max-width: 600px;
+            color: #898990;
+            line-height: 1.8;
+            margin-top: 25px;
+        }
+
+        .chapters-list {
             margin-top: 65px;
-
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 20px;
+            gap: 16px;
         }
 
-        .chapter-card {
-            min-height: 300px;
-
-            padding: 32px;
-
-            border: 1px solid rgba(255,255,255,.09);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.035),
-                    rgba(255,255,255,.008)
-                );
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            transition: .35s ease;
+        .chapter {
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            align-items: center;
+            gap: 30px;
+            transition: 0.3s ease;
         }
 
-        .chapter-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(255,255,255,.22);
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.055),
-                    rgba(255,255,255,.012)
-                );
+        .chapter:hover {
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.025);
+            transform: translateX(4px);
         }
 
         .chapter-number {
-            color: #62636a;
-            font-size: 13px;
-            letter-spacing: 2px;
-        }
-
-        .chapter-card h3 {
-            font-family: "Space Grotesk";
+            font-family: "Cormorant Garamond", serif;
             font-size: 32px;
-            line-height: 1.1;
-            margin-top: 12px;
+            color: #55555c;
         }
 
-        .chapter-card p {
-            color: #777880;
-            line-height: 1.6;
-            margin-top: 15px;
+        .chapter-info h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            font-weight: 400;
+        }
+
+        .chapter-info p {
+            color: #74747b;
+            font-size: 12px;
+            margin-top: 7px;
         }
 
         .chapter-link {
-            margin-top: 30px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #99999f;
+        }
 
-            color: #f0f0f1;
+        .chapter.locked {
+            opacity: 0.4;
+        }
 
+        /* =========================
+           NOTIFY
+        ========================= */
+
+        .notify {
+            margin-top: 70px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .notify h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 38px;
+            font-weight: 400;
+        }
+
+        .notify p {
+            color: #77777e;
             font-size: 13px;
-            font-weight: 700;
+            margin: 12px 0 25px;
+        }
+
+        .notify-form {
+            display: flex;
+            max-width: 480px;
+            margin: auto;
+        }
+
+        .notify-form input {
+            flex: 1;
+            background: #101115;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px;
+            color: white;
+            outline: none;
+        }
+
+        .notify-form button {
+            background: white;
+            color: black;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 10px;
             letter-spacing: 1.5px;
-        }
-
-        .coming {
-            opacity: .42;
-        }
-
-        .coming:hover {
-            transform: none;
         }
 
         /* =========================
            ABOUT
         ========================= */
 
-        .about-box {
-            margin-top: 60px;
-
-            max-width: 900px;
-
-            padding: 45px;
-
-            border: 1px solid rgba(255,255,255,.08);
-
-            background: rgba(255,255,255,.015);
+        #about {
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .about-box p {
-            color: #919198;
-
-            font-size: 19px;
-            line-height: 1.8;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
         }
 
-        .about-box p + p {
-            margin-top: 25px;
+        .about-text {
+            color: #929299;
+            line-height: 2;
+            font-size: 15px;
+        }
+
+        .creator {
+            border-left: 1px solid rgba(255,255,255,0.12);
+            padding-left: 45px;
+        }
+
+        .creator-label {
+            color: #66666d;
+            font-size: 9px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .creator-name {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: 65px;
+            font-weight: 400;
+        }
+
+        .creator-role {
+            color: #77777e;
+            margin-top: 8px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* =========================
@@ -625,114 +595,112 @@
         ========================= */
 
         footer {
-            border-top: 1px solid rgba(255,255,255,.07);
-
-            padding: 45px 62px;
-
+            padding: 45px 7%;
+            border-top: 1px solid rgba(255,255,255,0.07);
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            color: #5e5f66;
-
-            font-size: 13px;
+            color: #55555b;
+            font-size: 10px;
+            letter-spacing: 2px;
         }
 
-        footer strong {
-            color: #898990;
+        footer .footer-logo {
+            color: #88888f;
+            letter-spacing: 5px;
         }
 
         /* =========================
            MOBILE
         ========================= */
 
-        @media (max-width: 1000px) {
-
-            .hero-visual {
-                opacity: .25;
-                right: -80px;
-            }
-
-            .chapter-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-        }
-
-        @media (max-width: 700px) {
+        @media (max-width: 900px) {
 
             header {
-                height: 82px;
-                padding: 0 22px;
-            }
-
-            .logo {
-                font-size: 23px;
+                padding: 0 5%;
             }
 
             nav {
-                gap: 18px;
+                gap: 15px;
             }
 
-            nav a {
-                font-size: 14px;
+            nav a:not(.nav-read) {
+                display: none;
             }
 
             .hero {
-                min-height: auto;
-                padding: 70px 25px 90px;
-            }
-
-            .eyebrow {
-                font-size: 11px;
-                letter-spacing: 2.5px;
-            }
-
-            .time {
-                font-size: 110px;
-                letter-spacing: -8px;
-            }
-
-            .am {
-                font-size: 95px;
-                letter-spacing: -6px;
-                margin-left: 45px;
-            }
-
-            .description {
-                font-size: 17px;
-                margin-top: 55px;
-            }
-
-            .hero-buttons {
+                padding: 140px 7% 80px;
                 flex-direction: column;
                 align-items: flex-start;
             }
 
-            .hero-visual {
+            .phone-area {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .story-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 55px;
+            }
+
+            .chapter {
+                grid-template-columns: 55px 1fr;
+            }
+
+            .chapter-link {
                 display: none;
             }
 
-            .section {
-                padding: 90px 25px;
+            .creator {
+                padding-left: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 85px;
+                letter-spacing: -4px;
             }
 
-            .story-grid {
-                grid-template-columns: 1fr;
-                gap: 45px;
-            }
-
-            .chapter-grid {
-                grid-template-columns: 1fr;
-            }
-
-            footer {
-                padding: 35px 25px;
+            .hero-buttons {
                 flex-direction: column;
-                gap: 15px;
+                width: 100%;
+            }
+
+            .btn {
                 text-align: center;
             }
 
+            section {
+                padding: 90px 7%;
+            }
+
+            .progress-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .progress-bar {
+                width: 100%;
+            }
+
+            .notify-form {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .notify-form button {
+                padding: 14px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
         }
 
     </style>
@@ -741,19 +709,18 @@
 <body>
 
     <!-- =========================
-         NAVIGATION
-    ========================= -->
+         HEADER
+    ========================== -->
 
     <header>
 
-        <a href="index.html" class="logo">
-            3<span>/</span>17
-        </a>
+        <a href="index.html" class="logo">3 / 17</a>
 
         <nav>
             <a href="#story">Story</a>
             <a href="#chapters">Chapters</a>
             <a href="#about">About</a>
+            <a href="chapter1.html" class="nav-read">Read</a>
         </nav>
 
     </header>
@@ -761,49 +728,47 @@
 
     <!-- =========================
          HERO
-    ========================= -->
+    ========================== -->
 
     <main>
 
         <section class="hero">
 
-            <div class="hero-content">
+            <div class="hero-left">
 
                 <div class="eyebrow">
                     AN ORIGINAL DIGITAL THRILLER
                 </div>
 
-                <div class="time">
-                    3:17
+                <h1>3:17</h1>
+
+                <div class="hero-time">
+                    AM
                 </div>
 
-                <div class="am">
-                    AM.
-                </div>
-
-                <p class="description">
+                <p class="hero-description">
                     Nyla's phone unlocked by itself.
-                    Then <strong>her own account</strong> sent her a
-                    message. The message knew something she hadn't
-                    told anyone.
+                    Then her own account sent her a message.
+                    The message knew something she hadn't told anyone.
                 </p>
 
                 <div class="tags">
+
                     <span class="tag">PSYCHOLOGICAL</span>
                     <span class="tag">MYSTERY</span>
                     <span class="tag">HORROR</span>
                     <span class="tag">DIGITAL THRILLER</span>
+
                 </div>
 
                 <div class="hero-buttons">
 
-                    <a href="chapter1.html" class="primary-button">
-                        START READING
-                        <span>→</span>
+                    <a href="chapter1.html" class="btn btn-primary">
+                        Start Reading
                     </a>
 
-                    <a href="#story" class="explore-button">
-                        EXPLORE STORY
+                    <a href="#story" class="btn btn-secondary">
+                        Explore Story
                     </a>
 
                 </div>
@@ -813,25 +778,29 @@
 
             <!-- PHONE -->
 
-            <div class="hero-visual">
+            <div class="phone-area">
 
-                <div class="phone-time">
-                    3:17
-                </div>
+                <div class="phone">
 
-                <div class="phone-date">
-                    THURSDAY · 17
-                </div>
+                    <div class="phone-screen">
 
-                <div class="phone-message">
+                        <div class="phone-time">
+                            3:17
+                        </div>
 
-                    <small>
-                        @nyla.jpg
-                    </small>
+                        <div class="phone-message">
 
-                    <p>
-                        don't look behind you.
-                    </p>
+                            <small>
+                                @nyla.jpg
+                            </small>
+
+                            <p>
+                                don't look behind you
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -842,62 +811,92 @@
 
         <!-- =========================
              STORY
-        ========================= -->
+        ========================== -->
 
-        <section class="section" id="story">
+        <section id="story">
 
             <div class="section-label">
                 THE STORY
             </div>
 
             <h2 class="section-title">
-                Something is wrong.
+                Some messages<br>
+                should stay unread.
             </h2>
 
-            <p class="section-description">
-                It started with a phone that unlocked itself.
-                Then came the messages. Then the photographs.
-                And eventually, Nyla realized someone was using
-                her identity better than she was.
-            </p>
-
+            <div class="section-line"></div>
 
             <div class="story-grid">
 
-                <div class="story-copy">
+                <div class="story-text">
 
                     <p>
-                        Nyla is twenty, permanently online, and
-                        absolutely convinced she knows her own life.
+                        Nyla is twenty, in college, always online and
+                        usually one notification away from being distracted.
                     </p>
 
                     <p>
-                        Until one night, at exactly 3:17 AM,
-                        her phone receives a message from an account
-                        that shouldn't exist.
+                        But one night her phone unlocks at exactly
+                        3:16 AM.
                     </p>
 
                     <p>
-                        The username is hers.
-                        The profile picture is hers.
-                        And whoever is behind it knows what happens
-                        next.
+                        A message appears.
                     </p>
+
+                    <div class="rule-box">
+
+                        <span>
+                            THE FIRST RULE
+                        </span>
+
+                        <strong>
+                            Never answer a message from yourself.
+                        </strong>
+
+                    </div>
 
                 </div>
 
 
-                <div class="story-highlight">
+                <div>
 
-                    <span>
-                        THE FIRST RULE
-                    </span>
+                    <div class="story-highlight">
+                        "You're going to hear something
+                        in a minute."
+                    </div>
 
-                    <h3>
-                        If your own account messages you...
-                        don't answer.
-                    </h3>
+                    <div class="story-text" style="margin-top:35px;">
 
+                        <p>
+                            The account sending the messages belongs to Nyla.
+                        </p>
+
+                        <p>
+                            The photographs are taken from places
+                            she remembers being.
+                        </p>
+
+                        <p>
+                            The problem is...
+                            she doesn't remember taking them.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <span id="progressText">
+                    READING PROGRESS — 0%
+                </span>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
 
             </div>
@@ -907,51 +906,49 @@
 
         <!-- =========================
              CHAPTERS
-        ========================= -->
+        ========================== -->
 
-        <section class="section" id="chapters">
+        <section id="chapters">
 
             <div class="section-label">
-                THE STORY SO FAR
+                TRANSMISSIONS
             </div>
 
             <h2 class="section-title">
-                Chapters.
+                Chapters
             </h2>
 
-            <p class="section-description">
-                Read the story from the beginning.
-                New chapters will appear here as the mystery gets deeper.
+            <p class="chapters-intro">
+                Every chapter reveals another piece of the night.
+                Some things are better discovered slowly.
             </p>
 
 
-            <div class="chapter-grid">
+            <div class="chapters-list">
 
 
                 <!-- CHAPTER 1 -->
 
-                <a href="chapter1.html" class="chapter-card">
+                <a href="chapter1.html" class="chapter">
 
-                    <div>
+                    <div class="chapter-number">
+                        01
+                    </div>
 
-                        <div class="chapter-number">
-                            CHAPTER 01
-                        </div>
+                    <div class="chapter-info">
 
                         <h3>
-                            Someone<br>
-                            Logged In.
+                            3:16 AM
                         </h3>
 
                         <p>
-                            Nyla's phone unlocks by itself.
-                            Then a message arrives from her own account.
+                            The phone unlocks.
                         </p>
 
                     </div>
 
                     <div class="chapter-link">
-                        READ CHAPTER →
+                        READ →
                     </div>
 
                 </a>
@@ -959,29 +956,26 @@
 
                 <!-- CHAPTER 2 -->
 
-                <a href="chapter2.html" class="chapter-card">
+                <a href="chapter2.html" class="chapter">
 
-                    <div>
+                    <div class="chapter-number">
+                        02
+                    </div>
 
-                        <div class="chapter-number">
-                            CHAPTER 02
-                        </div>
+                    <div class="chapter-info">
 
                         <h3>
-                            Don't<br>
-                            Open It.
+                            Don't Answer It
                         </h3>
 
                         <p>
-                            Someone knocks.
-                            Aanya tells Nyla not to open the door.
-                            But someone is already inside.
+                            Someone is outside.
                         </p>
 
                     </div>
 
                     <div class="chapter-link">
-                        READ CHAPTER →
+                        READ →
                     </div>
 
                 </a>
@@ -989,32 +983,61 @@
 
                 <!-- CHAPTER 3 -->
 
-                <div class="chapter-card coming">
+                <div class="chapter locked">
 
-                    <div>
+                    <div class="chapter-number">
+                        03
+                    </div>
 
-                        <div class="chapter-number">
-                            CHAPTER 03
-                        </div>
+                    <div class="chapter-info">
 
                         <h3>
-                            Coming<br>
-                            Soon.
+                            You Turned Around
                         </h3>
 
                         <p>
-                            The story continues.
-                            But Nyla is starting to remember something
-                            she was never supposed to know.
+                            Something was already there.
                         </p>
 
                     </div>
 
                     <div class="chapter-link">
-                        LOCKED
+                        COMING SOON
                     </div>
 
                 </div>
+
+            </div>
+
+
+            <!-- NOTIFY -->
+
+            <div class="notify">
+
+                <h3>
+                    Next transmission.
+                </h3>
+
+                <p>
+                    Get notified when another chapter appears.
+                </p>
+
+                <form class="notify-form" id="notifyForm">
+
+                    <input
+                        type="email"
+                        id="emailInput"
+                        placeholder="your@email.com"
+                        required
+                    >
+
+                    <button type="submit">
+                        NOTIFY ME
+                    </button>
+
+                </form>
+
+                <p id="notifyMessage"></p>
 
             </div>
 
@@ -1023,40 +1046,58 @@
 
         <!-- =========================
              ABOUT
-        ========================= -->
+        ========================== -->
 
-        <section class="section" id="about">
+        <section id="about">
 
             <div class="section-label">
                 ABOUT 3:17
             </div>
 
-            <h2 class="section-title">
-                Not every<br>
-                screen tells the truth.
-            </h2>
+            <div class="about-grid">
 
-            <p class="section-description">
-                3:17 is an original psychological horror story
-                built around one question:
-                what happens when your digital identity knows you
-                better than you know yourself?
-            </p>
+                <div class="about-text">
+
+                    <p>
+                        3:17 is a psychological horror story
+                        built around identity, memory and the strange
+                        things that can happen when our digital lives
+                        begin behaving like they have a mind of their own.
+                    </p>
+
+                    <p>
+                        The story follows Nyla as she tries to understand
+                        why her own digital identity seems to know more
+                        about her life than she does.
+                    </p>
+
+                    <p>
+                        But the deeper she goes,
+                        the less certain she becomes about one question:
+                    </p>
+
+                    <div class="story-highlight">
+                        Who is actually Nyla?
+                    </div>
+
+                </div>
 
 
-            <div class="about-box">
+                <div class="creator">
 
-                <p>
-                    This isn't just a story about a haunted phone.
-                    It's about identity, memory, social media,
-                    and the uncomfortable feeling that something
-                    online might be watching you.
-                </p>
+                    <div class="creator-label">
+                        CREATED BY
+                    </div>
 
-                <p>
-                    Read carefully.
-                    Some details may matter later.
-                </p>
+                    <div class="creator-name">
+                        Zaina
+                    </div>
+
+                    <div class="creator-role">
+                        Original Story
+                    </div>
+
+                </div>
 
             </div>
 
@@ -1067,42 +1108,137 @@
 
     <!-- =========================
          FOOTER
-    ========================= -->
+    ========================== -->
 
     <footer>
 
-        <div>
-            <strong>3 / 17</strong>
-            &nbsp; · &nbsp;
-            An Original Digital Thriller
+        <div class="footer-logo">
+            3 / 17
         </div>
 
         <div>
-            Something is wrong.
+            AN ORIGINAL DIGITAL THRILLER
+        </div>
+
+        <div>
+            ZAINA
         </div>
 
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script>
 
         /* =========================
-           NAVIGATION EFFECT
-        ========================= */
+           EMAIL NOTIFICATION
+        ========================== */
 
-        const navLinks = document.querySelectorAll("nav a");
+        const notifyForm = document.getElementById("notifyForm");
+        const emailInput = document.getElementById("emailInput");
+        const notifyMessage = document.getElementById("notifyMessage");
 
-        navLinks.forEach(link => {
+        notifyForm.addEventListener("submit", function(event) {
 
-            link.addEventListener("click", () => {
+            event.preventDefault();
 
-                navLinks.forEach(item => {
-                    item.style.color = "";
-                });
+            const email = emailInput.value.trim();
 
-                link.style.color = "#ffffff";
+            if (!email) {
+                return;
+            }
 
-            });
+            localStorage.setItem("317_reader_email", email);
+
+            notifyForm.innerHTML = `
+                <div style="
+                    width:100%;
+                    padding:15px;
+                    border:1px solid rgba(255,255,255,0.12);
+                    color:#aaa;
+                    font-size:12px;
+                    letter-spacing:1px;
+                ">
+                    YOU'RE ON THE LIST.
+                </div>
+            `;
+
+        });
+
+
+        /* =========================
+           READING PROGRESS
+        ========================== */
+
+        function updateProgress() {
+
+            let progress = 0;
+
+            if (localStorage.getItem("317_chapter1_read")) {
+                progress = 50;
+            }
+
+            if (localStorage.getItem("317_chapter2_read")) {
+                progress = 100;
+            }
+
+            document.getElementById("progressText").textContent =
+                "READING PROGRESS — " + progress + "%";
+
+            document.getElementById("progressFill").style.width =
+                progress + "%";
+        }
+
+        updateProgress();
+
+
+        /* =========================
+           SAVED EMAIL
+        ========================== */
+
+        const savedEmail =
+            localStorage.getItem("317_reader_email");
+
+        if (savedEmail) {
+
+            notifyForm.innerHTML = `
+                <div style="
+                    width:100%;
+                    padding:15px;
+                    border:1px solid rgba(255,255,255,0.12);
+                    color:#777;
+                    font-size:11px;
+                    letter-spacing:1px;
+                ">
+                    YOU'RE ALREADY ON THE LIST.
+                </div>
+            `;
+
+        }
+
+
+        /* =========================
+           HEADER SCROLL EFFECT
+        ========================== */
+
+        window.addEventListener("scroll", function() {
+
+            const header = document.querySelector("header");
+
+            if (window.scrollY > 40) {
+
+                header.style.background =
+                    "rgba(8, 9, 12, 0.92)";
+
+            } else {
+
+                header.style.background =
+                    "rgba(8, 9, 12, 0.72)";
+
+            }
 
         });
 
