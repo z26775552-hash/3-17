@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="6yWP_PkWY2FvQ2Rxw9o0L86Rqr6iXBMla3fVKtoZvg0" />
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>3:17 AM — A Psychological Horror Story</title>
 
-    <meta name="description" content="3:17 is a psychological horror story about Nyla, a college student whose phone unlocks at 3:16 AM and begins sending messages from her own account.">
+    <meta name="description"
+        content="3:17 is a psychological horror story about Nyla, a college student whose phone unlocks at 3:16 AM and begins sending messages from her own account.">
 
     <meta name="robots" content="index, follow">
-
     <meta name="author" content="Zaina">
-
     <meta name="theme-color" content="#08090c">
 
-    <!-- Open Graph -->
+    <!-- Google / Social Preview -->
     <meta property="og:title" content="3:17 AM — A Psychological Horror Story">
-    <meta property="og:description" content="Nyla's phone unlocked by itself. Then her own account sent her a message.">
+    <meta property="og:description"
+        content="Nyla's phone unlocked by itself. Then her own account sent her a message.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="3:17">
+    <meta property="og:image"
+        content="https://z26775552-hash.github.io/3-17/317-cover.png">
+    <meta property="og:image:alt"
+        content="3:17 AM psychological horror story cover">
 
-    <!-- Twitter / Social Preview -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="3:17 AM — A Psychological Horror Story">
-    <meta name="twitter:description" content="Nyla's phone unlocked by itself. Then her own account sent her a message.">
+    <meta name="twitter:description"
+        content="Nyla's phone unlocked by itself. Then her own account sent her a message.">
+    <meta name="twitter:image"
+        content="https://z26775552-hash.github.io/3-17/317-cover.png">
+    <meta name="twitter:image:alt"
+        content="3:17 AM psychological horror story cover">
+
+    <link rel="canonical"
+        href="https://z26775552-hash.github.io/3-17/">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
 
@@ -47,24 +59,10 @@
 
         body {
             background: #08090c;
-            color: #eeeeee;
+            color: #e9e9ed;
             font-family: "Inter", sans-serif;
             overflow-x: hidden;
         }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        /* =========================
-           BACKGROUND
-        ========================= */
 
         body::before {
             content: "";
@@ -73,546 +71,531 @@
             pointer-events: none;
             background:
                 radial-gradient(
-                    circle at 20% 10%,
-                    rgba(120, 120, 120, 0.07),
+                    circle at 15% 20%,
+                    rgba(67, 76, 110, 0.10),
                     transparent 30%
                 ),
                 radial-gradient(
-                    circle at 80% 70%,
-                    rgba(255, 255, 255, 0.025),
+                    circle at 85% 70%,
+                    rgba(31, 41, 66, 0.12),
                     transparent 30%
                 );
             z-index: -1;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HEADER */
 
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 78px;
+            z-index: 1000;
+            height: 76px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 6%;
-            background: rgba(8, 9, 12, 0.72);
+            padding: 0 7%;
+            background: rgba(8, 9, 12, 0.82);
             backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
         }
 
         .logo {
-            font-size: 18px;
-            letter-spacing: 5px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 27px;
             font-weight: 600;
+            letter-spacing: 4px;
+            color: #f2f2f4;
+        }
+
+        .logo span {
+            color: #777d91;
         }
 
         nav {
             display: flex;
-            align-items: center;
             gap: 34px;
+            align-items: center;
         }
 
         nav a {
             font-size: 12px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #9a9a9f;
+            color: #9295a0;
             transition: 0.3s ease;
         }
 
         nav a:hover {
-            color: white;
+            color: #ffffff;
         }
 
         .nav-read {
-            padding: 11px 18px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white !important;
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 10px 17px;
+            border-radius: 2px;
         }
 
         .nav-read:hover {
-            background: white;
-            color: black !important;
+            background: #f0f0f0;
+            color: #08090c;
         }
 
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
-            min-height: 100vh;
-            padding: 170px 7% 90px;
-            display: flex;
+            min-height: calc(100vh - 76px);
+            padding: 90px 7% 100px;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
             align-items: center;
-            justify-content: space-between;
-            gap: 80px;
+            gap: 70px;
             position: relative;
         }
 
-        .hero-left {
+        .hero-content {
             max-width: 720px;
-            z-index: 2;
         }
 
         .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #777d91;
             font-size: 11px;
-            letter-spacing: 4px;
-            color: #888890;
-            margin-bottom: 30px;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
         }
 
-        .hero h1 {
+        .eyebrow::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: #777d91;
+        }
+
+        .hero-title {
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(90px, 13vw, 190px);
+            font-size: clamp(100px, 15vw, 210px);
             line-height: 0.72;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: -7px;
+            color: #f0f0f2;
         }
 
-        .hero-time {
-            margin-top: 20px;
-            font-size: 14px;
-            letter-spacing: 9px;
-            color: #77777e;
-            padding-left: 8px;
+        .hero-am {
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(40px, 5vw, 70px);
+            letter-spacing: 12px;
+            margin-top: 22px;
+            color: #74798a;
         }
 
-        .hero-description {
-            max-width: 580px;
-            margin-top: 48px;
-            font-size: 17px;
+        .hero-text {
+            max-width: 550px;
+            margin-top: 38px;
+            color: #a6a8b0;
+            font-size: 15px;
             line-height: 1.9;
-            color: #a5a5ab;
+            font-weight: 300;
         }
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 28px;
+            gap: 9px;
+            margin-top: 27px;
         }
 
         .tag {
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 13px;
+            border: 1px solid rgba(255,255,255,0.11);
+            padding: 8px 11px;
+            color: #858996;
             font-size: 9px;
-            letter-spacing: 2px;
-            color: #8c8c92;
+            letter-spacing: 1.5px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 14px;
-            margin-top: 40px;
+            gap: 13px;
+            margin-top: 38px;
         }
 
         .btn {
-            padding: 15px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 145px;
+            padding: 14px 21px;
+            border: 1px solid rgba(255,255,255,0.17);
             font-size: 11px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             transition: 0.3s ease;
-            cursor: pointer;
-            display: inline-block;
         }
 
         .btn-primary {
-            background: white;
-            color: black;
+            background: #e9e9eb;
+            color: #090a0d;
         }
 
         .btn-primary:hover {
-            background: #cfcfcf;
+            background: white;
             transform: translateY(-2px);
         }
 
         .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.18);
-            color: #ddd;
+            color: #b7bac4;
         }
 
         .btn-secondary:hover {
             background: rgba(255,255,255,0.06);
+            color: white;
         }
 
-        /* =========================
-           PHONE
-        ========================= */
+        /* PHONE */
 
-        .phone-area {
-            width: 320px;
-            min-width: 320px;
+        .hero-visual {
             display: flex;
             justify-content: center;
-            position: relative;
+            align-items: center;
         }
 
         .phone {
-            width: 230px;
-            height: 460px;
-            border-radius: 34px;
-            border: 1px solid rgba(255,255,255,0.22);
-            background:
-                linear-gradient(
-                    145deg,
-                    #181a1f,
-                    #08090b
-                );
+            width: 285px;
+            height: 570px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 35px;
+            padding: 9px;
+            background: #111319;
             box-shadow:
-                0 50px 100px rgba(0,0,0,0.65),
-                inset 0 0 30px rgba(255,255,255,0.02);
-            padding: 13px;
-            transform: rotate(5deg);
-            position: relative;
+                0 35px 100px rgba(0,0,0,0.65),
+                inset 0 0 0 1px rgba(255,255,255,0.04);
+            transform: rotate(2deg);
         }
 
         .phone-screen {
-            width: 100%;
             height: 100%;
-            border-radius: 25px;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
             background:
-                radial-gradient(
-                    circle at 50% 30%,
-                    rgba(100,100,100,0.1),
-                    transparent 30%
-                ),
-                #050608;
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 32px 20px;
+                linear-gradient(
+                    145deg,
+                    #151923,
+                    #08090c 65%
+                );
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+        }
+
+        .phone-notch {
+            position: absolute;
+            width: 92px;
+            height: 23px;
+            background: #050507;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 0 0 17px 17px;
+            z-index: 3;
         }
 
         .phone-time {
             text-align: center;
             font-family: "Cormorant Garamond", serif;
-            font-size: 55px;
-            color: #eeeeee;
+            font-size: 78px;
+            margin-top: 105px;
+            line-height: 1;
+            color: #ececef;
+        }
+
+        .phone-small {
+            text-align: center;
+            margin-top: 10px;
+            color: #777d8d;
+            font-size: 9px;
+            letter-spacing: 2px;
         }
 
         .phone-message {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 18px;
+            margin: auto 22px 45px;
+            border: 1px solid rgba(255,255,255,0.10);
+            padding: 18px;
+            background: rgba(255,255,255,0.025);
         }
 
-        .phone-message small {
-            display: block;
-            color: #66666d;
-            font-size: 9px;
+        .phone-message-top {
+            color: #74798b;
+            font-size: 8px;
             letter-spacing: 1px;
             margin-bottom: 10px;
         }
 
-        .phone-message p {
-            font-size: 12px;
-            line-height: 1.7;
-            color: #aaaab0;
+        .phone-message-text {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 23px;
+            line-height: 1.2;
+            color: #e3e3e7;
         }
 
-        /* =========================
-           SECTIONS
-        ========================= */
+        /* STORY */
 
-        section {
-            padding: 130px 7%;
+        .section {
+            padding: 120px 7%;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
 
         .section-label {
+            color: #666b7b;
             font-size: 10px;
-            letter-spacing: 4px;
-            color: #66666c;
-            margin-bottom: 24px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
         }
 
         .section-title {
             font-family: "Cormorant Garamond", serif;
-            font-size: clamp(48px, 6vw, 82px);
-            font-weight: 400;
+            font-size: clamp(45px, 6vw, 82px);
+            font-weight: 500;
             line-height: 0.95;
-        }
-
-        .section-line {
-            width: 100%;
-            height: 1px;
-            background: rgba(255,255,255,0.08);
-            margin: 55px 0;
-        }
-
-        /* =========================
-           STORY
-        ========================= */
-
-        #story {
-            border-top: 1px solid rgba(255,255,255,0.05);
+            max-width: 800px;
         }
 
         .story-grid {
+            margin-top: 60px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            gap: 80px;
         }
 
         .story-text {
-            color: #9d9da4;
-            font-size: 16px;
+            color: #a4a6af;
+            font-size: 15px;
             line-height: 2;
+            font-weight: 300;
         }
 
-        .story-text p {
-            margin-bottom: 25px;
-        }
-
-        .story-highlight {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 36px;
-            line-height: 1.3;
-            color: #ddd;
+        .story-text p + p {
+            margin-top: 22px;
         }
 
         .rule-box {
-            margin-top: 40px;
-            padding: 30px;
-            border-left: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.025);
+            border-left: 1px solid #555b6e;
+            padding-left: 30px;
         }
 
-        .rule-box span {
-            display: block;
-            font-size: 9px;
+        .rule-number {
+            color: #666b7b;
+            font-size: 10px;
             letter-spacing: 3px;
-            color: #77777e;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
-        .rule-box strong {
+        .rule-title {
             font-family: "Cormorant Garamond", serif;
-            font-size: 27px;
-            font-weight: 400;
+            font-size: 38px;
+            margin-bottom: 13px;
         }
 
-        /* =========================
-           PROGRESS
-        ========================= */
+        .rule-text {
+            color: #898c96;
+            line-height: 1.8;
+            font-size: 14px;
+        }
 
-        .progress-card {
+        /* PROGRESS */
+
+        .progress-box {
             margin-top: 70px;
-            padding: 25px 28px;
             border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
+            background: rgba(255,255,255,0.015);
         }
 
-        .progress-card span {
-            color: #77777d;
+        .progress-info {
+            color: #777b88;
             font-size: 11px;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .progress-bar {
-            flex: 1;
-            max-width: 350px;
+            width: 230px;
             height: 2px;
-            background: #22242a;
+            background: rgba(255,255,255,0.08);
         }
 
         .progress-fill {
             width: 0%;
             height: 100%;
-            background: #ddd;
-            transition: width 0.5s ease;
+            background: #b7bbc8;
+            transition: width 0.4s ease;
         }
 
-        /* =========================
-           CHAPTERS
-        ========================= */
+        /* CHAPTERS */
 
-        #chapters {
-            background: #0a0b0e;
-        }
-
-        .chapters-intro {
-            max-width: 600px;
-            color: #898990;
-            line-height: 1.8;
-            margin-top: 25px;
-        }
-
-        .chapters-list {
-            margin-top: 65px;
+        .chapters {
+            margin-top: 60px;
             display: grid;
-            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
         }
 
         .chapter {
+            min-height: 280px;
             border: 1px solid rgba(255,255,255,0.08);
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 90px 1fr auto;
-            align-items: center;
-            gap: 30px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
             transition: 0.3s ease;
         }
 
         .chapter:hover {
             border-color: rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.025);
-            transform: translateX(4px);
+            transform: translateY(-4px);
         }
 
         .chapter-number {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 32px;
-            color: #55555c;
-        }
-
-        .chapter-info h3 {
-            font-family: "Cormorant Garamond", serif;
-            font-size: 30px;
-            font-weight: 400;
-        }
-
-        .chapter-info p {
-            color: #74747b;
-            font-size: 12px;
-            margin-top: 7px;
-        }
-
-        .chapter-link {
+            color: #666b7b;
             font-size: 10px;
             letter-spacing: 2px;
-            color: #99999f;
         }
 
-        .chapter.locked {
+        .chapter-title {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 38px;
+            margin-top: 55px;
+        }
+
+        .chapter-description {
+            color: #777b86;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        .chapter-arrow {
+            position: absolute;
+            right: 25px;
+            bottom: 22px;
+            color: #858998;
+            font-size: 20px;
+        }
+
+        .locked {
             opacity: 0.4;
         }
 
-        /* =========================
-           NOTIFY
-        ========================= */
+        /* NOTIFY */
 
         .notify {
-            margin-top: 70px;
+            margin-top: 80px;
             border: 1px solid rgba(255,255,255,0.08);
-            padding: 40px;
+            padding: 55px;
             text-align: center;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(70,77,100,0.09),
+                    transparent 65%
+                );
         }
 
         .notify h3 {
             font-family: "Cormorant Garamond", serif;
-            font-size: 38px;
-            font-weight: 400;
+            font-size: 43px;
+            font-weight: 500;
         }
 
         .notify p {
-            color: #77777e;
+            color: #777b87;
             font-size: 13px;
-            margin: 12px 0 25px;
+            margin-top: 10px;
         }
 
         .notify-form {
+            margin: 27px auto 0;
             display: flex;
-            max-width: 480px;
-            margin: auto;
+            max-width: 500px;
         }
 
         .notify-form input {
             flex: 1;
-            background: #101115;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 14px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.13);
             color: white;
+            padding: 14px;
             outline: none;
+            font-family: inherit;
         }
 
         .notify-form button {
-            background: white;
-            color: black;
+            background: #e9e9eb;
+            color: #08090c;
             border: none;
-            padding: 0 20px;
+            padding: 0 22px;
+            font-family: inherit;
             cursor: pointer;
-            font-size: 10px;
-            letter-spacing: 1.5px;
         }
 
-        /* =========================
-           ABOUT
-        ========================= */
-
-        #about {
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
+        /* ABOUT */
 
         .about-grid {
+            margin-top: 60px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            gap: 80px;
         }
 
         .about-text {
-            color: #929299;
+            color: #989ba5;
             line-height: 2;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .creator {
-            border-left: 1px solid rgba(255,255,255,0.12);
-            padding-left: 45px;
+            border-left: 1px solid rgba(255,255,255,0.13);
+            padding-left: 30px;
         }
 
         .creator-label {
-            color: #66666d;
-            font-size: 9px;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
+            color: #686d7d;
+            font-size: 10px;
+            letter-spacing: 3px;
         }
 
         .creator-name {
             font-family: "Cormorant Garamond", serif;
-            font-style: italic;
-            font-size: 65px;
-            font-weight: 400;
+            font-size: 48px;
+            margin-top: 10px;
         }
 
-        .creator-role {
-            color: #77777e;
-            margin-top: 8px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
-            padding: 45px 7%;
-            border-top: 1px solid rgba(255,255,255,0.07);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 35px 7%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            color: #55555b;
+            justify-content: space-between;
+            color: #555966;
             font-size: 10px;
             letter-spacing: 2px;
         }
 
-        footer .footer-logo {
-            color: #88888f;
-            letter-spacing: 5px;
+        .footer-name {
+            color: #858998;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 900px) {
 
@@ -629,62 +612,59 @@
             }
 
             .hero {
-                padding: 140px 7% 80px;
-                flex-direction: column;
-                align-items: flex-start;
+                grid-template-columns: 1fr;
+                padding: 70px 7%;
             }
 
-            .phone-area {
-                width: 100%;
-                justify-content: center;
+            .hero-visual {
+                margin-top: 20px;
             }
 
             .story-grid,
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 55px;
+                gap: 45px;
             }
 
-            .chapter {
-                grid-template-columns: 55px 1fr;
+            .chapters {
+                grid-template-columns: 1fr;
             }
 
-            .chapter-link {
-                display: none;
-            }
-
-            .creator {
-                padding-left: 25px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .hero h1 {
-                font-size: 85px;
-                letter-spacing: -4px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                text-align: center;
-            }
-
-            section {
-                padding: 90px 7%;
-            }
-
-            .progress-card {
+            .progress-box {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
             .progress-bar {
                 width: 100%;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .hero-title {
+                letter-spacing: -4px;
+            }
+
+            .phone {
+                width: 245px;
+                height: 490px;
+            }
+
+            .phone-time {
+                font-size: 63px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .notify {
+                padding: 35px 20px;
             }
 
             .notify-form {
@@ -698,8 +678,7 @@
 
             footer {
                 flex-direction: column;
-                gap: 20px;
-                text-align: center;
+                gap: 15px;
             }
         }
 
@@ -708,13 +687,13 @@
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <!-- HEADER -->
 
     <header>
 
-        <a href="index.html" class="logo">3 / 17</a>
+        <a href="index.html" class="logo">
+            3 <span>/</span> 17
+        </a>
 
         <nav>
             <a href="#story">Story</a>
@@ -726,39 +705,37 @@
     </header>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- HERO -->
 
     <main>
 
         <section class="hero">
 
-            <div class="hero-left">
+            <div class="hero-content">
 
                 <div class="eyebrow">
-                    AN ORIGINAL DIGITAL THRILLER
+                    A DIGITAL HORROR STORY
                 </div>
 
-                <h1>3:17</h1>
+                <h1 class="hero-title">
+                    3:17
+                </h1>
 
-                <div class="hero-time">
+                <div class="hero-am">
                     AM
                 </div>
 
-                <p class="hero-description">
+                <p class="hero-text">
                     Nyla's phone unlocked by itself.
                     Then her own account sent her a message.
                     The message knew something she hadn't told anyone.
                 </p>
 
                 <div class="tags">
-
                     <span class="tag">PSYCHOLOGICAL</span>
                     <span class="tag">MYSTERY</span>
                     <span class="tag">HORROR</span>
                     <span class="tag">DIGITAL THRILLER</span>
-
                 </div>
 
                 <div class="hero-buttons">
@@ -776,27 +753,31 @@
             </div>
 
 
-            <!-- PHONE -->
-
-            <div class="phone-area">
+            <div class="hero-visual">
 
                 <div class="phone">
 
                     <div class="phone-screen">
 
+                        <div class="phone-notch"></div>
+
                         <div class="phone-time">
                             3:17
                         </div>
 
+                        <div class="phone-small">
+                            THURSDAY · 17
+                        </div>
+
                         <div class="phone-message">
 
-                            <small>
+                            <div class="phone-message-top">
                                 @nyla.jpg
-                            </small>
+                            </div>
 
-                            <p>
+                            <div class="phone-message-text">
                                 don't look behind you
-                            </p>
+                            </div>
 
                         </div>
 
@@ -809,79 +790,61 @@
         </section>
 
 
-        <!-- =========================
-             STORY
-        ========================== -->
+        <!-- STORY -->
 
-        <section id="story">
+        <section class="section" id="story">
 
             <div class="section-label">
-                THE STORY
+                01 — THE STORY
             </div>
 
             <h2 class="section-title">
-                Some messages<br>
-                should stay unread.
+                Some things are better left unopened.
             </h2>
-
-            <div class="section-line"></div>
 
             <div class="story-grid">
 
                 <div class="story-text">
 
                     <p>
-                        Nyla is twenty, in college, always online and
-                        usually one notification away from being distracted.
+                        Nyla is twenty, in college, always online,
+                        always connected, and usually one notification
+                        away from being distracted.
                     </p>
 
                     <p>
-                        But one night her phone unlocks at exactly
-                        3:16 AM.
+                        But one night, at exactly 3:16 AM,
+                        her phone unlocks by itself.
                     </p>
 
                     <p>
-                        A message appears.
+                        Then a message arrives from an account
+                        that should belong to her.
                     </p>
 
-                    <div class="rule-box">
-
-                        <span>
-                            THE FIRST RULE
-                        </span>
-
-                        <strong>
-                            Never answer a message from yourself.
-                        </strong>
-
-                    </div>
+                    <p>
+                        Except Nyla didn't send it.
+                    </p>
 
                 </div>
 
 
-                <div>
+                <div class="rule-box">
 
-                    <div class="story-highlight">
-                        "You're going to hear something
-                        in a minute."
+                    <div class="rule-number">
+                        THE FIRST RULE
                     </div>
 
-                    <div class="story-text" style="margin-top:35px;">
+                    <div class="rule-title">
+                        Don't answer it.
+                    </div>
 
-                        <p>
-                            The account sending the messages belongs to Nyla.
-                        </p>
-
-                        <p>
-                            The photographs are taken from places
-                            she remembers being.
-                        </p>
-
-                        <p>
-                            The problem is...
-                            she doesn't remember taking them.
-                        </p>
-
+                    <div class="rule-text">
+                        Whatever happens at 3:17,
+                        don't answer the message.
+                        Don't look behind you.
+                        And most importantly,
+                        don't trust what your phone shows you.
                     </div>
 
                 </div>
@@ -889,11 +852,13 @@
             </div>
 
 
-            <div class="progress-card">
+            <!-- PROGRESS -->
 
-                <span id="progressText">
-                    READING PROGRESS — 0%
-                </span>
+            <div class="progress-box">
+
+                <div class="progress-info">
+                    YOUR READING PROGRESS
+                </div>
 
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
@@ -904,105 +869,84 @@
         </section>
 
 
-        <!-- =========================
-             CHAPTERS
-        ========================== -->
+        <!-- CHAPTERS -->
 
-        <section id="chapters">
+        <section class="section" id="chapters">
 
             <div class="section-label">
-                TRANSMISSIONS
+                02 — CHAPTERS
             </div>
 
             <h2 class="section-title">
-                Chapters
+                The night has already started.
             </h2>
 
-            <p class="chapters-intro">
-                Every chapter reveals another piece of the night.
-                Some things are better discovered slowly.
-            </p>
+            <div class="chapters">
 
-
-            <div class="chapters-list">
-
-
-                <!-- CHAPTER 1 -->
 
                 <a href="chapter1.html" class="chapter">
 
                     <div class="chapter-number">
-                        01
+                        CHAPTER 01
                     </div>
 
-                    <div class="chapter-info">
-
-                        <h3>
-                            3:16 AM
-                        </h3>
-
-                        <p>
-                            The phone unlocks.
-                        </p>
-
+                    <div class="chapter-title">
+                        3:16
                     </div>
 
-                    <div class="chapter-link">
-                        READ →
+                    <div class="chapter-description">
+                        The phone unlocks by itself.
+                        Then Nyla receives a message
+                        from her own account.
+                    </div>
+
+                    <div class="chapter-arrow">
+                        →
                     </div>
 
                 </a>
 
-
-                <!-- CHAPTER 2 -->
 
                 <a href="chapter2.html" class="chapter">
 
                     <div class="chapter-number">
-                        02
+                        CHAPTER 02
                     </div>
 
-                    <div class="chapter-info">
-
-                        <h3>
-                            Don't Answer It
-                        </h3>
-
-                        <p>
-                            Someone is outside.
-                        </p>
-
+                    <div class="chapter-title">
+                        Don't Answer
                     </div>
 
-                    <div class="chapter-link">
-                        READ →
+                    <div class="chapter-description">
+                        Someone knocks.
+                        Aanya knows something she
+                        shouldn't know.
+                    </div>
+
+                    <div class="chapter-arrow">
+                        →
                     </div>
 
                 </a>
 
 
-                <!-- CHAPTER 3 -->
-
                 <div class="chapter locked">
 
                     <div class="chapter-number">
-                        03
+                        CHAPTER 03
                     </div>
 
-                    <div class="chapter-info">
-
-                        <h3>
-                            You Turned Around
-                        </h3>
-
-                        <p>
-                            Something was already there.
-                        </p>
-
+                    <div class="chapter-title">
+                        Coming Soon
                     </div>
 
-                    <div class="chapter-link">
-                        COMING SOON
+                    <div class="chapter-description">
+                        Some messages arrive before
+                        the event happens.
+                    </div>
+
+                    <div class="chapter-arrow">
+                        •••
                     </div>
 
                 </div>
@@ -1015,70 +959,62 @@
             <div class="notify">
 
                 <h3>
-                    Next transmission.
+                    Don't miss 3:17.
                 </h3>
 
                 <p>
-                    Get notified when another chapter appears.
+                    Get notified when the next chapter appears.
                 </p>
 
                 <form class="notify-form" id="notifyForm">
 
                     <input
                         type="email"
-                        id="emailInput"
+                        id="email"
                         placeholder="your@email.com"
                         required
                     >
 
                     <button type="submit">
-                        NOTIFY ME
+                        Notify Me
                     </button>
 
                 </form>
-
-                <p id="notifyMessage"></p>
 
             </div>
 
         </section>
 
 
-        <!-- =========================
-             ABOUT
-        ========================== -->
+        <!-- ABOUT -->
 
-        <section id="about">
+        <section class="section" id="about">
 
             <div class="section-label">
-                ABOUT 3:17
+                03 — ABOUT
             </div>
+
+            <h2 class="section-title">
+                A story built for the screen.
+            </h2>
 
             <div class="about-grid">
 
                 <div class="about-text">
 
-                    <p>
-                        3:17 is a psychological horror story
-                        built around identity, memory and the strange
-                        things that can happen when our digital lives
-                        begin behaving like they have a mind of their own.
-                    </p>
+                    3:17 is a psychological horror story
+                    told through a digital world.
 
-                    <p>
-                        The story follows Nyla as she tries to understand
-                        why her own digital identity seems to know more
-                        about her life than she does.
-                    </p>
+                    <br><br>
 
-                    <p>
-                        But the deeper she goes,
-                        the less certain she becomes about one question:
-                    </p>
+                    Phones, messages, memories and social
+                    media become part of the mystery.
 
-                    <div class="story-highlight">
-                        Who is actually Nyla?
-                    </div>
+                    <br><br>
+
+                    The deeper Nyla looks,
+                    the less certain she becomes
+                    about what is real.
 
                 </div>
 
@@ -1090,11 +1026,7 @@
                     </div>
 
                     <div class="creator-name">
-                        Zaina
-                    </div>
-
-                    <div class="creator-role">
-                        Original Story
+                        ZAINA
                     </div>
 
                 </div>
@@ -1106,141 +1038,73 @@
     </main>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
 
     <footer>
 
-        <div class="footer-logo">
-            3 / 17
+        <div>
+            3:17 — A PSYCHOLOGICAL HORROR STORY
         </div>
 
-        <div>
-            AN ORIGINAL DIGITAL THRILLER
-        </div>
-
-        <div>
+        <div class="footer-name">
             ZAINA
         </div>
 
     </footer>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
     <script>
 
-        /* =========================
-           EMAIL NOTIFICATION
-        ========================== */
+        /* EMAIL NOTIFICATION */
 
         const notifyForm = document.getElementById("notifyForm");
-        const emailInput = document.getElementById("emailInput");
-        const notifyMessage = document.getElementById("notifyMessage");
 
         notifyForm.addEventListener("submit", function(event) {
 
             event.preventDefault();
 
-            const email = emailInput.value.trim();
+            const email = document.getElementById("email").value.trim();
 
-            if (!email) {
-                return;
+            if (email) {
+
+                localStorage.setItem("317_email", email);
+
+                alert("You're on the list. See you at 3:17.");
+
+                notifyForm.reset();
+
             }
-
-            localStorage.setItem("317_reader_email", email);
-
-            notifyForm.innerHTML = `
-                <div style="
-                    width:100%;
-                    padding:15px;
-                    border:1px solid rgba(255,255,255,0.12);
-                    color:#aaa;
-                    font-size:12px;
-                    letter-spacing:1px;
-                ">
-                    YOU'RE ON THE LIST.
-                </div>
-            `;
 
         });
 
 
-        /* =========================
-           READING PROGRESS
-        ========================== */
+        /* READING PROGRESS */
+
+        const progressFill = document.getElementById("progressFill");
 
         function updateProgress() {
 
-            let progress = 0;
+            const savedProgress =
+                localStorage.getItem("317_progress");
 
-            if (localStorage.getItem("317_chapter1_read")) {
-                progress = 50;
+            if (savedProgress) {
+
+                progressFill.style.width =
+                    savedProgress + "%";
+
             }
 
-            if (localStorage.getItem("317_chapter2_read")) {
-                progress = 100;
-            }
-
-            document.getElementById("progressText").textContent =
-                "READING PROGRESS — " + progress + "%";
-
-            document.getElementById("progressFill").style.width =
-                progress + "%";
         }
 
         updateProgress();
 
 
-        /* =========================
-           SAVED EMAIL
-        ========================== */
+        /* SAVE HOMEPAGE VISIT */
 
-        const savedEmail =
-            localStorage.getItem("317_reader_email");
-
-        if (savedEmail) {
-
-            notifyForm.innerHTML = `
-                <div style="
-                    width:100%;
-                    padding:15px;
-                    border:1px solid rgba(255,255,255,0.12);
-                    color:#777;
-                    font-size:11px;
-                    letter-spacing:1px;
-                ">
-                    YOU'RE ALREADY ON THE LIST.
-                </div>
-            `;
-
-        }
-
-
-        /* =========================
-           HEADER SCROLL EFFECT
-        ========================== */
-
-        window.addEventListener("scroll", function() {
-
-            const header = document.querySelector("header");
-
-            if (window.scrollY > 40) {
-
-                header.style.background =
-                    "rgba(8, 9, 12, 0.92)";
-
-            } else {
-
-                header.style.background =
-                    "rgba(8, 9, 12, 0.72)";
-
-            }
-
-        });
+        localStorage.setItem(
+            "317_last_visit",
+            new Date().toISOString()
+        );
 
     </script>
 
