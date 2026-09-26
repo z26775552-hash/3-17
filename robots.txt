@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://z26775552-hash.github.io/3-17/sitemap.xml
