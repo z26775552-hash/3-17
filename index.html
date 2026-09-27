@@ -685,43 +685,22 @@
 
         .star-picker {
             display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 20;
+            gap: 5px;
+            margin-bottom: 4px;
         }
 
         .star-picker button {
-            appearance: none;
-            -webkit-appearance: none;
             border: 0;
             background: transparent;
             color: #555966;
-            font-size: 34px;
-            line-height: 1;
+            font-size: 27px;
             cursor: pointer;
-            padding: 8px;
-            margin: 0;
-            min-width: 48px;
-            min-height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: auto;
-            touch-action: manipulation;
-            position: relative;
-            z-index: 21;
+            padding: 3px;
         }
 
         .star-picker button.active,
-        .star-picker button:hover,
-        .star-picker button:focus-visible {
-            color: #f1f2f5;
-        }
-
-        .star-picker button:focus-visible {
-            outline: 1px solid #9da2b0;
-            outline-offset: 2px;
+        .star-picker button:hover {
+            color: #e8e9ed;
         }
 
         .check-row {
@@ -1237,11 +1216,11 @@
                                 </div>
 
                                 <div class="star-picker" id="starPicker" aria-label="Choose a rating">
-                                    <button type="button" data-rating="1" aria-label="1 star" aria-pressed="false">★</button>
-                                    <button type="button" data-rating="2" aria-label="2 stars" aria-pressed="false">★</button>
-                                    <button type="button" data-rating="3" aria-label="3 stars" aria-pressed="false">★</button>
-                                    <button type="button" data-rating="4" aria-label="4 stars" aria-pressed="false">★</button>
-                                    <button type="button" data-rating="5" aria-label="5 stars" aria-pressed="false">★</button>
+                                    <button type="button" data-rating="1" aria-label="1 star">★</button>
+                                    <button type="button" data-rating="2" aria-label="2 stars">★</button>
+                                    <button type="button" data-rating="3" aria-label="3 stars">★</button>
+                                    <button type="button" data-rating="4" aria-label="4 stars">★</button>
+                                    <button type="button" data-rating="5" aria-label="5 stars">★</button>
                                 </div>
                             </div>
 
@@ -1355,25 +1334,44 @@
 
     <script>
 
-        /*
-         * 3:17 COMMUNITY SYSTEM
-         *
-         * IMPORTANT:
-         * Replace these two values with your Supabase project values.
-         * Never put a Supabase SERVICE ROLE key here.
-         */
-        const SUPABASE_URL = "https://puzkftnbjwipwntbnfft.supabase.co";
-        const SUPABASE_ANON_KEY = "YOUR_ACTUAL_PUBLISHABLE_KEY";
+        /* =========================================================
+           3:17 COMMUNITY SYSTEM
+           =========================================================
+           IMPORTANT:
+           Paste your Supabase PUBLISHABLE key on the line below.
+           Never paste the Secret / service_role key here.
+        */
 
-        const supabaseReady =
-            SUPABASE_URL.startsWith("https://") &&
+        const SUPABASE_URL = "https://puzkftnbjwipwntbnfft.supabase.co";
+        const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
+
+        const hasRealSupabaseKey =
+            SUPABASE_ANON_KEY &&
+            SUPABASE_ANON_KEY !== "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE" &&
             SUPABASE_ANON_KEY.length > 20;
 
-        const supabaseClient = supabaseReady
-            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-            : null;
+        const supabaseClient =
+            hasRealSupabaseKey && window.supabase
+                ? window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_ANON_KEY
+                  )
+                : null;
 
-        /* EMAIL NOTIFICATION */
+        function setStatus(element, message, isError = false) {
+            if (!element) return;
+            element.textContent = message;
+            element.style.color = isError ? "#c7a5a5" : "#969aa7";
+        }
+
+        function databaseNotReadyMessage() {
+            return "The community system is not connected yet. Add your Supabase Publishable key and commit the file.";
+        }
+
+
+        /* =========================================================
+           EMAIL NOTIFICATION SIGNUP
+           ========================================================= */
 
         const notifyForm = document.getElementById("notifyForm");
         const notifyStatus = document.createElement("div");
@@ -1386,41 +1384,79 @@
 
             event.preventDefault();
 
-            const email = document.getElementById("email").value.trim();
+            const emailInput = document.getElementById("email");
+            const email = emailInput.value.trim().toLowerCase();
 
-            if (!email) return;
+            if (!email) {
+                setStatus(notifyStatus, "Please enter your email address.", true);
+                return;
+            }
+
+            if (!emailInput.checkValidity()) {
+                setStatus(notifyStatus, "Please enter a valid email address.", true);
+                return;
+            }
 
             if (!supabaseClient) {
-                notifyStatus.textContent =
-                    "Notifications are being connected. Please try again after setup.";
+                setStatus(notifyStatus, databaseNotReadyMessage(), true);
                 return;
             }
 
-            notifyStatus.textContent = "Joining the list...";
+            setStatus(notifyStatus, "Joining the list...");
 
-            const { error } = await supabaseClient
-                .from("subscribers")
-                .upsert(
-                    { email: email },
-                    { onConflict: "email" }
+            try {
+                /*
+                 * INSERT is intentional here instead of upsert.
+                 * It only needs the public INSERT policy and therefore
+                 * works with the RLS setup used by this website.
+                 */
+                const { error } = await supabaseClient
+                    .from("subscribers")
+                    .insert({ email: email });
+
+                if (error) {
+                    console.error("Subscriber error:", error);
+
+                    if (
+                        error.code === "23505" ||
+                        String(error.message || "").toLowerCase().includes("duplicate")
+                    ) {
+                        setStatus(
+                            notifyStatus,
+                            "You're already on the 3:17 notification list."
+                        );
+                    } else {
+                        setStatus(
+                            notifyStatus,
+                            "We couldn't add you right now. Please try again.",
+                            true
+                        );
+                    }
+                    return;
+                }
+
+                setStatus(
+                    notifyStatus,
+                    "You're on the list. We'll let you know when the next chapter arrives."
                 );
 
-            if (error) {
-                console.error(error);
-                notifyStatus.textContent =
-                    "Something went wrong. Please try again.";
-                return;
+                notifyForm.reset();
+
+            } catch (error) {
+                console.error("Notification signup error:", error);
+                setStatus(
+                    notifyStatus,
+                    "We couldn't connect right now. Please try again.",
+                    true
+                );
             }
-
-            notifyStatus.textContent =
-                "You're on the list. We'll let you know when the next chapter arrives.";
-
-            notifyForm.reset();
 
         });
 
 
-        /* STAR RATING */
+        /* =========================================================
+           STAR RATING
+           ========================================================= */
 
         let selectedRating = 0;
 
@@ -1432,11 +1468,10 @@
             starButtons.forEach(function(button) {
 
                 const value = Number(button.dataset.rating);
+                const active = value <= selectedRating;
 
-                button.classList.toggle(
-                    "active",
-                    value <= selectedRating
-                );
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
 
             });
 
@@ -1445,6 +1480,7 @@
         starButtons.forEach(function(button) {
 
             button.addEventListener("click", function(event) {
+
                 event.preventDefault();
                 event.stopPropagation();
 
@@ -1452,22 +1488,9 @@
 
                 if (value >= 1 && value <= 5) {
                     selectedRating = value;
-                    button.setAttribute("aria-pressed", "true");
-                    starButtons.forEach(function(other) {
-                        if (other !== button) {
-                            other.setAttribute("aria-pressed", "false");
-                        }
-                    });
                     paintStars();
                 }
 
-            });
-
-            button.addEventListener("keydown", function(event) {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    button.click();
-                }
             });
 
         });
@@ -1475,7 +1498,9 @@
         paintStars();
 
 
-        /* REVIEWS */
+        /* =========================================================
+           REVIEWS
+           ========================================================= */
 
         const reviewForm =
             document.getElementById("reviewForm");
@@ -1496,47 +1521,75 @@
             const wantsChapter3 =
                 document.getElementById("chapterRequest").checked;
 
+            if (!name) {
+                setStatus(status, "Please enter your name.", true);
+                return;
+            }
+
+            if (!review) {
+                setStatus(status, "Please write a review.", true);
+                return;
+            }
+
             if (selectedRating < 1 || selectedRating > 5) {
-                status.textContent =
-                    "Please choose a star rating first.";
+                setStatus(status, "Please choose a star rating first.", true);
                 return;
             }
 
             if (!supabaseClient) {
-                status.textContent =
-                    "Reviews are being connected. Please finish the Supabase setup first.";
+                setStatus(status, databaseNotReadyMessage(), true);
                 return;
             }
 
-            status.textContent = "Posting your review...";
+            setStatus(status, "Posting your review...");
 
-            const { error } = await supabaseClient
-                .from("reviews")
-                .insert({
-                    name: name,
-                    rating: selectedRating,
-                    review: review,
-                    chapter_request: wantsChapter3
-                });
+            try {
 
-            if (error) {
-                console.error(error);
-                status.textContent =
-                    "Could not post the review. Please try again.";
-                return;
+                const { error } = await supabaseClient
+                    .from("reviews")
+                    .insert({
+                        name: name,
+                        rating: selectedRating,
+                        review: review,
+                        chapter_request: wantsChapter3
+                    });
+
+                if (error) {
+                    console.error("Review error:", error);
+                    setStatus(
+                        status,
+                        "Could not post the review. Please try again.",
+                        true
+                    );
+                    return;
+                }
+
+                setStatus(
+                    status,
+                    "Review posted. Thank you for reading 3:17."
+                );
+
+                reviewForm.reset();
+                selectedRating = 0;
+                paintStars();
+
+                await loadReviews();
+
+            } catch (error) {
+                console.error("Review submission error:", error);
+                setStatus(
+                    status,
+                    "Something went wrong while posting your review.",
+                    true
+                );
             }
-
-            status.textContent =
-                "Review posted. Thank you for reading 3:17.";
-
-            reviewForm.reset();
-            selectedRating = 0;
-            paintStars();
-
-            loadReviews();
 
         });
 
+
+        /* =========================================================
+           LOAD REVIEWS
+           ========================================================= */
 
         async function loadReviews() {
 
@@ -1565,74 +1618,90 @@
                 return;
             }
 
-            const { data, error } =
-                await supabaseClient
-                    .from("reviews")
-                    .select("name,rating,review,chapter_request,created_at")
-                    .order("created_at", { ascending: false })
-                    .limit(50);
+            try {
 
-            if (error) {
-                console.error(error);
+                const { data, error } =
+                    await supabaseClient
+                        .from("reviews")
+                        .select("name,rating,review,chapter_request,created_at")
+                        .order("created_at", { ascending: false })
+                        .limit(50);
+
+                if (error) {
+                    console.error("Load reviews error:", error);
+                    list.innerHTML =
+                        '<div class="rating-meta">Reviews could not be loaded right now.</div>';
+                    return;
+                }
+
+                if (!data || !data.length) {
+                    list.innerHTML =
+                        '<div class="rating-meta">Be the first reader to leave a review.</div>';
+                    average.textContent = "—";
+                    stars.textContent = "☆☆☆☆☆";
+                    meta.textContent = "0 ratings";
+                    requests.textContent = "Chapter 3 requests: 0";
+                    return;
+                }
+
+                const total =
+                    data.reduce(function(sum, item) {
+                        return sum + Number(item.rating);
+                    }, 0);
+
+                const avg = total / data.length;
+
+                const requestTotal =
+                    data.filter(function(item) {
+                        return item.chapter_request === true;
+                    }).length;
+
+                average.textContent = avg.toFixed(1);
+
+                const rounded = Math.max(0, Math.min(5, Math.round(avg)));
+
+                stars.textContent =
+                    "★★★★★".slice(0, rounded) +
+                    "☆☆☆☆☆".slice(0, 5 - rounded);
+
+                meta.textContent =
+                    data.length +
+                    (data.length === 1 ? " rating" : " ratings");
+
+                requests.textContent =
+                    "Chapter 3 requests: " + requestTotal;
+
+                list.innerHTML = data.map(function(item) {
+
+                    const safeName = escapeHtml(item.name);
+                    const safeReview = escapeHtml(item.review);
+
+                    const rating = Math.max(
+                        1,
+                        Math.min(5, Number(item.rating) || 1)
+                    );
+
+                    const starText =
+                        "★★★★★".slice(0, rating) +
+                        "☆☆☆☆☆".slice(0, 5 - rating);
+
+                    return `
+                        <div class="review-item">
+                            <div class="review-top">
+                                <div class="review-name">${safeName}</div>
+                                <div class="review-stars">${starText}</div>
+                            </div>
+                            <div class="review-text">${safeReview}</div>
+                        </div>
+                    `;
+
+                }).join("");
+
+            } catch (error) {
+                console.error("Review loading error:", error);
                 list.innerHTML =
                     '<div class="rating-meta">Reviews could not be loaded right now.</div>';
-                return;
             }
-
-            if (!data.length) {
-                list.innerHTML =
-                    '<div class="rating-meta">Be the first reader to leave a review.</div>';
-                average.textContent = "—";
-                stars.textContent = "☆☆☆☆☆";
-                meta.textContent = "0 ratings";
-                requests.textContent = "Chapter 3 requests: 0";
-                return;
-            }
-
-            const total =
-                data.reduce((sum, item) => sum + Number(item.rating), 0);
-
-            const avg =
-                total / data.length;
-
-            const requestTotal =
-                data.filter(item => item.chapter_request).length;
-
-            average.textContent = avg.toFixed(1);
-            stars.textContent =
-                "★★★★★".slice(0, Math.round(avg)) +
-                "☆☆☆☆☆".slice(0, 5 - Math.round(avg));
-
-            meta.textContent =
-                data.length +
-                (data.length === 1 ? " rating" : " ratings");
-
-            requests.textContent =
-                "Chapter 3 requests: " + requestTotal;
-
-            list.innerHTML = data.map(function(item) {
-
-                const safeName =
-                    escapeHtml(item.name);
-
-                const safeReview =
-                    escapeHtml(item.review);
-
-                const starText =
-                    "★★★★★".slice(0, Number(item.rating)) +
-                    "☆☆☆☆☆".slice(0, 5 - Number(item.rating));
-
-                return `
-                    <div class="review-item">
-                        <div class="review-top">
-                            <div class="review-name">${safeName}</div>
-                            <div class="review-stars">${starText}</div>
-                        </div>
-                        <div class="review-text">${safeReview}</div>
-                    </div>
-                `;
-
-            }).join("");
 
         }
 
@@ -1649,7 +1718,9 @@
         }
 
 
-        /* READING PROGRESS */
+        /* =========================================================
+           READING PROGRESS
+           ========================================================= */
 
         const progressFill =
             document.getElementById("progressFill");
@@ -1664,7 +1735,7 @@
                 const safeProgress =
                     Math.max(
                         0,
-                        Math.min(100, Number(savedProgress))
+                        Math.min(100, Number(savedProgress) || 0)
                     );
 
                 progressFill.style.width =
