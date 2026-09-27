@@ -685,41 +685,22 @@
 
         .star-picker {
             display: flex;
-            gap: 4px;
-            margin: 2px 0 10px;
-            position: relative;
-            z-index: 50;
+            gap: 5px;
+            margin-bottom: 4px;
         }
 
         .star-picker button {
-            appearance: none;
-            -webkit-appearance: none;
             border: 0;
-            background: transparent !important;
-            color: #555966 !important;
-            font-size: 34px;
-            line-height: 1;
-            cursor: pointer !important;
-            padding: 6px;
-            margin: 0;
-            min-width: 48px;
-            min-height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 51;
-            pointer-events: auto !important;
+            background: transparent;
+            color: #555966;
+            font-size: 27px;
+            cursor: pointer;
+            padding: 3px;
         }
 
-        .star-picker button.active {
-            color: #ffffff !important;
-            text-shadow: 0 0 12px rgba(255,255,255,.65);
-        }
-
-        .star-picker button:hover,
-        .star-picker button:focus-visible {
-            color: #dddddf !important;
+        .star-picker button.active,
+        .star-picker button:hover {
+            color: #e8e9ed;
         }
 
         .check-row {
@@ -888,7 +869,43 @@
             }
         }
 
-    </style>
+    
+/* FORCE STAR RATING COLOR */
+#starPicker {
+    display: flex !important;
+    gap: 8px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+#starPicker button {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none !important;
+    background: transparent !important;
+    color: #555966 !important;
+    font-size: 36px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    padding: 6px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    opacity: 1 !important;
+    filter: none !important;
+    position: relative !important;
+    z-index: 10000 !important;
+}
+#starPicker button.active {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 0 12px #ffffff !important;
+}
+#starPicker button:hover {
+    color: #dddddd !important;
+}
+#starPicker button.active:hover {
+    color: #ffffff !important;
+}
+</style>
 </head>
 
 <body>
@@ -1365,7 +1382,6 @@
 
         const supabaseReady =
             SUPABASE_URL.startsWith("https://") &&
-            SUPABASE_ANON_KEY.startsWith("sb_publishable_") &&
             SUPABASE_ANON_KEY.length > 20;
 
         const supabaseClient = supabaseReady
@@ -1422,37 +1438,47 @@
         /* STAR RATING */
 
         let selectedRating = 0;
-        const starPicker = document.getElementById("starPicker");
-        const starButtons = Array.from(starPicker.querySelectorAll("button"));
+
+        const starButtons =
+            document.querySelectorAll("#starPicker button");
 
         function paintStars() {
-            starButtons.forEach(function(button) {
-                const value = Number(button.dataset.rating);
-                const active = value <= selectedRating;
-                button.classList.toggle("active", active);
-                button.setAttribute("aria-pressed", active ? "true" : "false");
+
+            starButtons.forEach(function(star) {
+
+                const value = Number(star.dataset.rating);
+                const isActive = value <= selectedRating;
+
+                star.classList.toggle("active", isActive);
+                star.style.setProperty(
+                    "color",
+                    isActive ? "#ffffff" : "#555966",
+                    "important"
+                );
+                star.setAttribute(
+                    "aria-pressed",
+                    isActive ? "true" : "false"
+                );
+
             });
+
         }
 
-        starPicker.addEventListener("click", function(event) {
-            const button = event.target.closest("button[data-rating]");
-            if (!button) return;
-            event.preventDefault();
-            selectedRating = Number(button.dataset.rating);
-            paintStars();
-        });
+        starButtons.forEach(function(button) {
 
-        starPicker.addEventListener("keydown", function(event) {
-            const button = event.target.closest("button[data-rating]");
-            if (!button) return;
-            if (event.key === "Enter" || event.key === " ") {
+            button.addEventListener("click", function(event) {
+
                 event.preventDefault();
                 selectedRating = Number(button.dataset.rating);
                 paintStars();
-            }
+
+            });
+
         });
 
         paintStars();
+
+
 
         /* REVIEWS */
 
