@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-92CJD9Q2H7"></script>
 <script>
@@ -604,6 +607,181 @@
             color: #858998;
         }
 
+
+        /* REVIEWS + RATINGS */
+
+        .feedback-section {
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 80px;
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .rating-big {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 58px;
+            line-height: 1;
+        }
+
+        .stars-display {
+            color: #d7d9df;
+            letter-spacing: 5px;
+            font-size: 18px;
+        }
+
+        .rating-meta {
+            color: #777b87;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .feedback-grid {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 35px;
+        }
+
+        .feedback-card {
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 28px;
+            background: rgba(255,255,255,0.015);
+        }
+
+        .feedback-card h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 31px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .feedback-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.13);
+            color: #fff;
+            padding: 13px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .feedback-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .star-picker {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 4px;
+        }
+
+        .star-picker button {
+            border: 0;
+            background: transparent;
+            color: #555966;
+            font-size: 27px;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        .star-picker button.active,
+        .star-picker button:hover {
+            color: #e8e9ed;
+        }
+
+        .check-row {
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            color: #858996;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .feedback-submit {
+            background: #e9e9eb;
+            color: #08090c;
+            border: 0;
+            padding: 14px 18px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+
+        .form-status {
+            min-height: 18px;
+            color: #969aa7;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .reviews-list {
+            display: grid;
+            gap: 12px;
+            max-height: 500px;
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        .review-item {
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding: 0 0 18px;
+        }
+
+        .review-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .review-name {
+            color: #d9dbe1;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .review-stars {
+            color: #cfd2da;
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
+
+        .review-text {
+            color: #858996;
+            font-size: 13px;
+            line-height: 1.75;
+            margin-top: 8px;
+        }
+
+        .request-count {
+            color: #777b87;
+            font-size: 11px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .feedback-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* MOBILE */
 
         @media (max-width: 900px) {
@@ -995,12 +1173,104 @@
         </section>
 
 
+
+            <!-- REVIEWS + RATINGS -->
+
+            <div class="feedback-section" id="reviews">
+
+                <div class="section-label">
+                    03 — READERS
+                </div>
+
+                <h2 class="section-title">
+                    What did 3:17 leave you feeling?
+                </h2>
+
+                <div class="rating-summary">
+                    <div class="rating-big" id="averageRating">—</div>
+                    <div>
+                        <div class="stars-display" id="averageStars">☆☆☆☆☆</div>
+                        <div class="rating-meta" id="ratingMeta">No ratings yet.</div>
+                    </div>
+                </div>
+
+                <div class="feedback-grid">
+
+                    <div class="feedback-card">
+
+                        <h3>Leave a review</h3>
+
+                        <form class="feedback-form" id="reviewForm">
+
+                            <input
+                                type="text"
+                                id="reviewName"
+                                maxlength="40"
+                                placeholder="Your name"
+                                required
+                            >
+
+                            <div>
+                                <div class="rating-meta" style="margin-bottom:8px;">
+                                    YOUR RATING
+                                </div>
+
+                                <div class="star-picker" id="starPicker" aria-label="Choose a rating">
+                                    <button type="button" data-rating="1" aria-label="1 star">★</button>
+                                    <button type="button" data-rating="2" aria-label="2 stars">★</button>
+                                    <button type="button" data-rating="3" aria-label="3 stars">★</button>
+                                    <button type="button" data-rating="4" aria-label="4 stars">★</button>
+                                    <button type="button" data-rating="5" aria-label="5 stars">★</button>
+                                </div>
+                            </div>
+
+                            <textarea
+                                id="reviewText"
+                                maxlength="500"
+                                placeholder="Tell us what you thought..."
+                                required
+                            ></textarea>
+
+                            <label class="check-row">
+                                <input type="checkbox" id="chapterRequest">
+                                I want Chapter 3
+                            </label>
+
+                            <button class="feedback-submit" type="submit">
+                                Post Review
+                            </button>
+
+                            <div class="form-status" id="reviewStatus" aria-live="polite"></div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="feedback-card">
+
+                        <h3>Reader thoughts</h3>
+
+                        <div class="reviews-list" id="reviewsList">
+                            <div class="rating-meta">Loading reviews...</div>
+                        </div>
+
+                        <div class="request-count" id="requestCount">
+                            Chapter 3 requests: —
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
         <!-- ABOUT -->
 
         <section class="section" id="about">
 
             <div class="section-label">
-                03 — ABOUT
+                04 — ABOUT
             </div>
 
             <h2 class="section-title">
@@ -1064,32 +1334,285 @@
 
     <script>
 
+        /*
+         * 3:17 COMMUNITY SYSTEM
+         *
+         * IMPORTANT:
+         * Replace these two values with your Supabase project values.
+         * Never put a Supabase SERVICE ROLE key here.
+         */
+        const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+        const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+
+        const supabaseReady =
+            SUPABASE_URL.startsWith("https://") &&
+            SUPABASE_ANON_KEY.length > 20;
+
+        const supabaseClient = supabaseReady
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+            : null;
+
         /* EMAIL NOTIFICATION */
 
         const notifyForm = document.getElementById("notifyForm");
+        const notifyStatus = document.createElement("div");
 
-        notifyForm.addEventListener("submit", function(event) {
+        notifyStatus.className = "form-status";
+        notifyStatus.setAttribute("aria-live", "polite");
+        notifyForm.appendChild(notifyStatus);
+
+        notifyForm.addEventListener("submit", async function(event) {
 
             event.preventDefault();
 
             const email = document.getElementById("email").value.trim();
 
-            if (email) {
+            if (!email) return;
 
-                localStorage.setItem("317_email", email);
-
-                alert("You're on the list. See you at 3:17.");
-
-                notifyForm.reset();
-
+            if (!supabaseClient) {
+                notifyStatus.textContent =
+                    "Notifications are being connected. Please try again after setup.";
+                return;
             }
+
+            notifyStatus.textContent = "Joining the list...";
+
+            const { error } = await supabaseClient
+                .from("subscribers")
+                .upsert(
+                    { email: email },
+                    { onConflict: "email" }
+                );
+
+            if (error) {
+                console.error(error);
+                notifyStatus.textContent =
+                    "Something went wrong. Please try again.";
+                return;
+            }
+
+            notifyStatus.textContent =
+                "You're on the list. We'll let you know when the next chapter arrives.";
+
+            notifyForm.reset();
 
         });
 
 
+        /* STAR RATING */
+
+        let selectedRating = 0;
+
+        const starButtons =
+            document.querySelectorAll("#starPicker button");
+
+        function paintStars() {
+
+            starButtons.forEach(function(button) {
+
+                const value = Number(button.dataset.rating);
+
+                button.classList.toggle(
+                    "active",
+                    value <= selectedRating
+                );
+
+            });
+
+        }
+
+        starButtons.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                selectedRating =
+                    Number(button.dataset.rating);
+
+                paintStars();
+
+            });
+
+        });
+
+
+        /* REVIEWS */
+
+        const reviewForm =
+            document.getElementById("reviewForm");
+
+        reviewForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const status =
+                document.getElementById("reviewStatus");
+
+            const name =
+                document.getElementById("reviewName").value.trim();
+
+            const review =
+                document.getElementById("reviewText").value.trim();
+
+            const wantsChapter3 =
+                document.getElementById("chapterRequest").checked;
+
+            if (selectedRating < 1 || selectedRating > 5) {
+                status.textContent =
+                    "Please choose a star rating first.";
+                return;
+            }
+
+            if (!supabaseClient) {
+                status.textContent =
+                    "Reviews are being connected. Please finish the Supabase setup first.";
+                return;
+            }
+
+            status.textContent = "Posting your review...";
+
+            const { error } = await supabaseClient
+                .from("reviews")
+                .insert({
+                    name: name,
+                    rating: selectedRating,
+                    review: review,
+                    chapter_request: wantsChapter3
+                });
+
+            if (error) {
+                console.error(error);
+                status.textContent =
+                    "Could not post the review. Please try again.";
+                return;
+            }
+
+            status.textContent =
+                "Review posted. Thank you for reading 3:17.";
+
+            reviewForm.reset();
+            selectedRating = 0;
+            paintStars();
+
+            loadReviews();
+
+        });
+
+
+        async function loadReviews() {
+
+            const list =
+                document.getElementById("reviewsList");
+
+            const average =
+                document.getElementById("averageRating");
+
+            const stars =
+                document.getElementById("averageStars");
+
+            const meta =
+                document.getElementById("ratingMeta");
+
+            const requests =
+                document.getElementById("requestCount");
+
+            if (!supabaseClient) {
+                list.innerHTML =
+                    '<div class="rating-meta">Reviews will appear here after the database is connected.</div>';
+                average.textContent = "—";
+                stars.textContent = "☆☆☆☆☆";
+                meta.textContent = "No ratings loaded yet.";
+                requests.textContent = "Chapter 3 requests: —";
+                return;
+            }
+
+            const { data, error } =
+                await supabaseClient
+                    .from("reviews")
+                    .select("name,rating,review,chapter_request,created_at")
+                    .order("created_at", { ascending: false })
+                    .limit(50);
+
+            if (error) {
+                console.error(error);
+                list.innerHTML =
+                    '<div class="rating-meta">Reviews could not be loaded right now.</div>';
+                return;
+            }
+
+            if (!data.length) {
+                list.innerHTML =
+                    '<div class="rating-meta">Be the first reader to leave a review.</div>';
+                average.textContent = "—";
+                stars.textContent = "☆☆☆☆☆";
+                meta.textContent = "0 ratings";
+                requests.textContent = "Chapter 3 requests: 0";
+                return;
+            }
+
+            const total =
+                data.reduce((sum, item) => sum + Number(item.rating), 0);
+
+            const avg =
+                total / data.length;
+
+            const requestTotal =
+                data.filter(item => item.chapter_request).length;
+
+            average.textContent = avg.toFixed(1);
+            stars.textContent =
+                "★★★★★".slice(0, Math.round(avg)) +
+                "☆☆☆☆☆".slice(0, 5 - Math.round(avg));
+
+            meta.textContent =
+                data.length +
+                (data.length === 1 ? " rating" : " ratings");
+
+            requests.textContent =
+                "Chapter 3 requests: " + requestTotal;
+
+            list.innerHTML = data.map(function(item) {
+
+                const safeName =
+                    escapeHtml(item.name);
+
+                const safeReview =
+                    escapeHtml(item.review);
+
+                const starText =
+                    "★★★★★".slice(0, Number(item.rating)) +
+                    "☆☆☆☆☆".slice(0, 5 - Number(item.rating));
+
+                return `
+                    <div class="review-item">
+                        <div class="review-top">
+                            <div class="review-name">${safeName}</div>
+                            <div class="review-stars">${starText}</div>
+                        </div>
+                        <div class="review-text">${safeReview}</div>
+                    </div>
+                `;
+
+            }).join("");
+
+        }
+
+
+        function escapeHtml(value) {
+
+            return String(value)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
         /* READING PROGRESS */
 
-        const progressFill = document.getElementById("progressFill");
+        const progressFill =
+            document.getElementById("progressFill");
 
         function updateProgress() {
 
@@ -1098,8 +1621,14 @@
 
             if (savedProgress) {
 
+                const safeProgress =
+                    Math.max(
+                        0,
+                        Math.min(100, Number(savedProgress))
+                    );
+
                 progressFill.style.width =
-                    savedProgress + "%";
+                    safeProgress + "%";
 
             }
 
@@ -1114,6 +1643,11 @@
             "317_last_visit",
             new Date().toISOString()
         );
+
+
+        /* LOAD COMMUNITY DATA */
+
+        loadReviews();
 
     </script>
 
