@@ -685,22 +685,43 @@
 
         .star-picker {
             display: flex;
-            gap: 5px;
-            margin-bottom: 4px;
+            gap: 8px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 20;
         }
 
         .star-picker button {
+            appearance: none;
+            -webkit-appearance: none;
             border: 0;
             background: transparent;
             color: #555966;
-            font-size: 27px;
+            font-size: 34px;
+            line-height: 1;
             cursor: pointer;
-            padding: 3px;
+            padding: 8px;
+            margin: 0;
+            min-width: 48px;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            touch-action: manipulation;
+            position: relative;
+            z-index: 21;
         }
 
         .star-picker button.active,
-        .star-picker button:hover {
-            color: #e8e9ed;
+        .star-picker button:hover,
+        .star-picker button:focus-visible {
+            color: #f1f2f5;
+        }
+
+        .star-picker button:focus-visible {
+            outline: 1px solid #9da2b0;
+            outline-offset: 2px;
         }
 
         .check-row {
@@ -1216,11 +1237,11 @@
                                 </div>
 
                                 <div class="star-picker" id="starPicker" aria-label="Choose a rating">
-                                    <button type="button" data-rating="1" aria-label="1 star">★</button>
-                                    <button type="button" data-rating="2" aria-label="2 stars">★</button>
-                                    <button type="button" data-rating="3" aria-label="3 stars">★</button>
-                                    <button type="button" data-rating="4" aria-label="4 stars">★</button>
-                                    <button type="button" data-rating="5" aria-label="5 stars">★</button>
+                                    <button type="button" data-rating="1" aria-label="1 star" aria-pressed="false">★</button>
+                                    <button type="button" data-rating="2" aria-label="2 stars" aria-pressed="false">★</button>
+                                    <button type="button" data-rating="3" aria-label="3 stars" aria-pressed="false">★</button>
+                                    <button type="button" data-rating="4" aria-label="4 stars" aria-pressed="false">★</button>
+                                    <button type="button" data-rating="5" aria-label="5 stars" aria-pressed="false">★</button>
                                 </div>
                             </div>
 
@@ -1342,7 +1363,7 @@
          * Never put a Supabase SERVICE ROLE key here.
          */
         const SUPABASE_URL = "https://puzkftnbjwipwntbnfft.supabase.co";
-        const SUPABASE_URL = "https://puzkftnbjwipwntbnfft.supabase.co"; const SUPABASE_ANON_KEY = "YOUR_ACTUAL_PUBLISHABLE_KEY";
+        const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
 
         const supabaseReady =
             SUPABASE_URL.startsWith("https://") &&
@@ -1423,16 +1444,35 @@
 
         starButtons.forEach(function(button) {
 
-            button.addEventListener("click", function() {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                event.stopPropagation();
 
-                selectedRating =
-                    Number(button.dataset.rating);
+                const value = Number(button.dataset.rating);
 
-                paintStars();
+                if (value >= 1 && value <= 5) {
+                    selectedRating = value;
+                    button.setAttribute("aria-pressed", "true");
+                    starButtons.forEach(function(other) {
+                        if (other !== button) {
+                            other.setAttribute("aria-pressed", "false");
+                        }
+                    });
+                    paintStars();
+                }
 
             });
 
+            button.addEventListener("keydown", function(event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    button.click();
+                }
+            });
+
         });
+
+        paintStars();
 
 
         /* REVIEWS */
