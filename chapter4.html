@@ -1,221 +1,850 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Nyla discovers why the reset keeps forcing her to choose between versions of the people she loves." name="description"/>
-<meta content="Zaina" name="author"/>
-<meta content="Chapter 5 — The Other Nyla | 3:17" property="og:title"/>
-<meta content="Nyla discovers why the reset keeps forcing her to choose between versions of the people she loves." property="og:description"/>
-<meta content="article" property="og:type"/>
-<meta content="3:17" property="og:site_name"/>
-<title>3:17 — Chapter 5</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Aanya finally tells Nyla what 3:17 really is. But the truth has been waiting behind another door.">
+<meta name="author" content="Zaina">
+
+<title>3:17 — Chapter 4</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:#07080b;color:#eee;font-family:"DM Sans",sans-serif;line-height:1.85;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.035;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.8) 0,rgba(255,255,255,.8) 1px,transparent 1px,transparent 4px)}
-body:after{content:"";position:fixed;width:600px;height:600px;top:-250px;right:-200px;border-radius:50%;background:rgba(80,90,130,.07);filter:blur(100px);pointer-events:none}
-.topbar{position:fixed;top:0;left:0;width:100%;height:70px;display:flex;justify-content:space-between;align-items:center;padding:0 7%;background:rgba(7,8,11,.8);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07);z-index:100}
-.logo{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:18px;letter-spacing:3px}
-.chapter-label{font-size:11px;letter-spacing:2px;color:#777b84}
-.progress{position:fixed;top:69px;left:0;width:100%;height:2px;background:#15171d;z-index:100}
-.progress-bar{width:0;height:100%;background:#e8e8e8;transition:width .1s linear}
-.hero{min-height:100vh;padding:180px 8% 100px;display:flex;align-items:center;position:relative}
-.hero-content{max-width:920px}
-.chapter-number{font-size:11px;letter-spacing:4px;color:#737781;margin-bottom:30px}
-.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(60px,10vw,145px);line-height:.88;letter-spacing:-6px;font-weight:600;margin-bottom:35px}
-.hero h1 span{color:#777b84}
-.hero-description{font-size:clamp(18px,2.2vw,27px);max-width:700px;color:#aeb1b8}
-.warning{display:inline-flex;align-items:center;gap:10px;margin-top:35px;padding:9px 14px;border:1px solid rgba(255,255,255,.12);font-size:10px;letter-spacing:2px;color:#999da5}
-.warning-dot{width:7px;height:7px;border-radius:50%;background:#ddd;box-shadow:0 0 15px #fff}
-.story{max-width:760px;margin:auto;padding:80px 8% 120px}
-.story h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,5vw,52px);line-height:1.05;margin:55px 0 25px;letter-spacing:-1.5px}
-.story p{font-size:18px;color:#c9cbd0;margin:0 0 28px}
-.story strong{color:#fff}
-.time{margin:80px 0 25px;color:#747983;font-size:10px;letter-spacing:4px;font-weight:600}
-.big-line{font-family:"Space Grotesk",sans-serif;font-size:clamp(30px,5vw,56px);line-height:1.05;letter-spacing:-2px;margin:70px 0;text-align:center}
-.big-line span{display:block;color:#777b84}
-.dialogue{border-left:2px solid #555a63;padding:8px 0 8px 24px;margin:42px 0}
-.dialogue .name{font-size:10px;letter-spacing:3px;color:#777b84;margin-bottom:7px}
-.dialogue p{font-size:20px;color:#eee;margin:0}
-.chat{margin:55px auto;max-width:620px;border:1px solid rgba(255,255,255,.1);background:#0b0d11;box-shadow:0 30px 80px rgba(0,0,0,.3);overflow:hidden}
-.chat-header{padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.08);font-size:10px;letter-spacing:2px;color:#777b84}
-.message{margin:18px 16px;padding:12px 15px;border-radius:14px 14px 14px 3px;background:#15181e;color:#d7d9de;max-width:78%}
-.message.right{margin-left:auto;border-radius:14px 14px 3px 14px;background:#242831}
-.message.dark{background:#090a0d;color:#fff;border:1px solid rgba(255,255,255,.08)}
-.message.glitch{animation:glitch 1.8s infinite}
-@keyframes glitch{0%,88%,100%{transform:none;opacity:1}90%{transform:translateX(-3px);opacity:.65}92%{transform:translateX(4px);opacity:.9}94%{transform:none}}
-.phone{max-width:330px;margin:60px auto;border:8px solid #181a20;border-radius:38px;padding:12px;background:#020305;box-shadow:0 30px 100px rgba(0,0,0,.55)}
-.phone-top{height:18px}.notch{width:90px;height:5px;border-radius:10px;background:#222;margin:auto}
-.phone-screen{min-height:430px;border-radius:25px;background:radial-gradient(circle at 50% 20%,#151922,#050609 65%);padding:28px 18px}
-.phone-time{font-family:"Space Grotesk";font-size:56px;text-align:center;margin:20px 0 35px}
-.notification{padding:14px;border:1px solid rgba(255,255,255,.08);margin:12px 0;background:#0e1015;border-radius:12px}
-.notification small{display:block;color:#70747d;font-size:9px;letter-spacing:2px;margin-bottom:5px}
-.notification strong{font-size:13px;font-weight:500}
-.evidence{border:1px solid rgba(255,255,255,.1);padding:28px;margin:55px 0;background:#090b0f;font-family:monospace;color:#b8bbc2;font-size:13px;white-space:pre-wrap}
-.evidence .red{color:#eee}.evidence .dim{color:#666b74}
-.photo{margin:55px auto;padding:18px;background:#0b0d11;border:1px solid rgba(255,255,255,.1);max-width:650px}
-.photo-scene{height:360px;position:relative;background:linear-gradient(#0d1119,#050608);overflow:hidden}
-.window{position:absolute;right:14%;top:14%;width:24%;height:46%;border:2px solid #262b34;background:#080b11}
-.bed{position:absolute;left:13%;bottom:18%;width:60%;height:22%;background:#171a20;border-radius:4px}
-.figure{position:absolute;width:55px;height:150px;right:25%;bottom:28%;background:#050505;border-radius:45% 45% 10% 10%;filter:blur(.3px);animation:sway 4s infinite}
-@keyframes sway{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
-.caption{text-align:center;color:#6e727a;font-size:9px;letter-spacing:3px;padding-top:15px}
-.rule{height:1px;background:rgba(255,255,255,.08);margin:80px 0}
-.whisper{font-family:"Space Grotesk";font-size:22px;color:#858993;text-align:center;letter-spacing:1px;margin:60px 0}
-.pulse{animation:pulse 1.6s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.ending{padding:120px 8% 100px;background:#050609;border-top:1px solid rgba(255,255,255,.07)}
-.ending-inner{max-width:850px;margin:auto;text-align:center}
-.ending-label{font-size:10px;letter-spacing:4px;color:#666b73;margin-bottom:35px}
-.ending h2{font-family:"Space Grotesk";font-size:clamp(50px,9vw,115px);line-height:.9;letter-spacing:-5px;margin-bottom:45px}
-.final-message{max-width:550px;margin:auto;color:#9fa3ab}
-.final-message p{margin-bottom:14px}
-.chapter-navigation{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:60px}
-.nav-button{padding:13px 18px;border:1px solid rgba(255,255,255,.12);color:#ddd;text-decoration:none;font-size:10px;letter-spacing:2px;transition:.25s}
-.nav-button:hover{background:#eee;color:#07080b}
-footer{padding:40px 7%;display:flex;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.06);font-size:9px;letter-spacing:2px;color:#555a63}
-@media(max-width:600px){.hero h1{letter-spacing:-4px}.story{padding-left:7%;padding-right:7%}.story p{font-size:17px}.photo-scene{height:270px}.ending h2{letter-spacing:-3px}footer{flex-direction:column}}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#07080b;
+    color:#eee;
+    font-family:"DM Sans",sans-serif;
+    line-height:1.85;
+    overflow-x:hidden;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:999;
+    opacity:.035;
+    background-image:repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.8) 0,
+        rgba(255,255,255,.8) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+}
+
+body:after{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    top:-250px;
+    right:-200px;
+    border-radius:50%;
+    background:rgba(80,90,130,.07);
+    filter:blur(100px);
+    pointer-events:none;
+}
+
+.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 7%;
+    background:rgba(7,8,11,.8);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+    z-index:100;
+}
+
+.logo{
+    font-family:"Space Grotesk",sans-serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.chapter-label{
+    font-size:11px;
+    letter-spacing:2px;
+    color:#777b84;
+}
+
+.progress{
+    position:fixed;
+    top:69px;
+    left:0;
+    width:100%;
+    height:2px;
+    background:#15171d;
+    z-index:100;
+}
+
+.progress-bar{
+    width:0;
+    height:100%;
+    background:#e8e8e8;
+    transition:width .1s linear;
+}
+
+.hero{
+    min-height:100vh;
+    padding:180px 8% 100px;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.hero-content{
+    max-width:920px;
+}
+
+.chapter-number{
+    font-size:11px;
+    letter-spacing:4px;
+    color:#737781;
+    margin-bottom:30px;
+}
+
+.hero h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(60px,10vw,145px);
+    line-height:.88;
+    letter-spacing:-6px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.hero-description{
+    font-size:clamp(18px,2.2vw,27px);
+    max-width:700px;
+    color:#aeb1b8;
+}
+
+.warning{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:35px;
+    padding:9px 14px;
+    border:1px solid rgba(255,255,255,.12);
+    font-size:10px;
+    letter-spacing:2px;
+    color:#999da5;
+}
+
+.warning-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#ddd;
+    box-shadow:0 0 15px #fff;
+}
+
+.story{
+    max-width:760px;
+    margin:auto;
+    padding:80px 8% 120px;
+}
+
+.story p{
+    font-size:18px;
+    color:#c9cbd0;
+    margin:0 0 28px;
+}
+
+.story strong{
+    color:#fff;
+}
+
+.time{
+    margin:80px 0 25px;
+    color:#747983;
+    font-size:10px;
+    letter-spacing:4px;
+    font-weight:600;
+}
+
+.big-line{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(30px,5vw,56px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin:70px 0;
+    text-align:center;
+}
+
+.dialogue{
+    border-left:2px solid #555a63;
+    padding:8px 0 8px 24px;
+    margin:42px 0;
+}
+
+.dialogue .name{
+    font-size:10px;
+    letter-spacing:3px;
+    color:#777b84;
+    margin-bottom:7px;
+}
+
+.dialogue p{
+    font-size:20px;
+    color:#eee;
+    margin:0;
+}
+
+.chat{
+    margin:55px auto;
+    max-width:620px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#0b0d11;
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
+    overflow:hidden;
+}
+
+.chat-header{
+    padding:15px 18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:10px;
+    letter-spacing:2px;
+    color:#777b84;
+}
+
+.message{
+    margin:18px 16px;
+    padding:12px 15px;
+    border-radius:14px 14px 14px 3px;
+    background:#15181e;
+    color:#d7d9de;
+    max-width:78%;
+}
+
+.message.right{
+    margin-left:auto;
+    border-radius:14px 14px 3px 14px;
+    background:#242831;
+}
+
+.message.dark{
+    background:#090a0d;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.phone{
+    max-width:330px;
+    margin:60px auto;
+    border:8px solid #181a20;
+    border-radius:38px;
+    padding:12px;
+    background:#020305;
+    box-shadow:0 30px 100px rgba(0,0,0,.55);
+}
+
+.phone-screen{
+    min-height:430px;
+    border-radius:25px;
+    background:radial-gradient(
+        circle at 50% 20%,
+        #151922,
+        #050609 65%
+    );
+    padding:28px 18px;
+}
+
+.phone-time{
+    font-family:"Space Grotesk";
+    font-size:56px;
+    text-align:center;
+    margin:20px 0 35px;
+}
+
+.notification{
+    padding:14px;
+    border:1px solid rgba(255,255,255,.08);
+    margin:12px 0;
+    background:#0e1015;
+    border-radius:12px;
+}
+
+.notification small{
+    display:block;
+    color:#70747d;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-bottom:5px;
+}
+
+.notification strong{
+    font-size:13px;
+    font-weight:500;
+}
+
+.evidence{
+    border:1px solid rgba(255,255,255,.1);
+    padding:28px;
+    margin:55px 0;
+    background:#090b0f;
+    font-family:monospace;
+    color:#b8bbc2;
+    font-size:13px;
+    white-space:pre-wrap;
+}
+
+.photo{
+    margin:55px auto;
+    padding:18px;
+    background:#0b0d11;
+    border:1px solid rgba(255,255,255,.1);
+    max-width:650px;
+}
+
+.photo-scene{
+    height:360px;
+    position:relative;
+    background:linear-gradient(#0d1119,#050608);
+    overflow:hidden;
+}
+
+.window{
+    position:absolute;
+    right:14%;
+    top:14%;
+    width:24%;
+    height:46%;
+    border:2px solid #262b34;
+    background:#080b11;
+}
+
+.bed{
+    position:absolute;
+    left:13%;
+    bottom:18%;
+    width:60%;
+    height:22%;
+    background:#171a20;
+    border-radius:4px;
+}
+
+.figure{
+    position:absolute;
+    width:55px;
+    height:150px;
+    right:25%;
+    bottom:28%;
+    background:#050505;
+    border-radius:45% 45% 10% 10%;
+}
+
+.caption{
+    text-align:center;
+    color:#6e727a;
+    font-size:9px;
+    letter-spacing:3px;
+    padding-top:15px;
+}
+
+.ending{
+    padding:120px 8% 100px;
+    background:#050609;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.ending-inner{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.ending-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#666b73;
+    margin-bottom:35px;
+}
+
+.ending h2{
+    font-family:"Space Grotesk";
+    font-size:clamp(50px,9vw,115px);
+    line-height:.9;
+    letter-spacing:-5px;
+    margin-bottom:45px;
+}
+
+.final-message{
+    max-width:550px;
+    margin:auto;
+    color:#9fa3ab;
+}
+
+.final-message p{
+    margin-bottom:14px;
+}
+
+.chapter-navigation{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:60px;
+}
+
+.nav-button{
+    padding:13px 18px;
+    border:1px solid rgba(255,255,255,.12);
+    color:#ddd;
+    text-decoration:none;
+    font-size:10px;
+    letter-spacing:2px;
+    transition:.25s;
+}
+
+.nav-button:hover{
+    background:#eee;
+    color:#07080b;
+}
+
+footer{
+    padding:40px 7%;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    border-top:1px solid rgba(255,255,255,.06);
+    font-size:9px;
+    letter-spacing:2px;
+    color:#555a63;
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+
+    .story{
+        padding-left:7%;
+        padding-right:7%;
+    }
+
+    .story p{
+        font-size:17px;
+    }
+
+    .photo-scene{
+        height:270px;
+    }
+
+    .ending h2{
+        letter-spacing:-3px;
+    }
+
+    footer{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
+
 <body>
-<header class="topbar"><div class="logo">3:17</div><div class="chapter-label">CHAPTER 05 · THE OTHER NYLA</div></header>
-<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-<section class="hero"><div class="hero-content">
-<div class="chapter-number">CHAPTER 05 · 05 / 06</div>
-<h1>The Other Nyla</h1>
-<p class="hero-description">Nyla meets the version of herself that has been sending the warnings. It knows what she will do because it has already watched her do it.</p>
-<div class="warning"><span class="warning-dot"></span>CHOOSE WHICH ONE WAKES UP</div>
-</div></section>
+
+<header class="topbar">
+    <div class="logo">3:17</div>
+    <div class="chapter-label">CHAPTER 04 · THE RESET</div>
+</header>
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="chapter-number">
+            CHAPTER 04 · 04 / 06
+        </div>
+
+        <h1>The Reset</h1>
+
+        <p class="hero-description">
+            Aanya finally tells Nyla what 3:17 really is.
+            But the truth has been waiting behind another door.
+        </p>
+
+        <div class="warning">
+            <span class="warning-dot"></span>
+            THE NIGHT HAS HAPPENED BEFORE
+        </div>
+
+    </div>
+</section>
+
 <main class="story">
-<div class="time">3:24 AM · THE OTHER SIDE</div>
-<p>The phone was still ringing.</p>
-<p>Nyla hadn't touched it.</p>
-<p>It answered itself.</p>
+
+<div class="time">3:21 AM · THE HIDDEN ROOM</div>
+
+<p>The closet door opened by itself.</p>
+
+<p>Nyla backed away.</p>
+
+<p>Nothing stood inside.</p>
+
+<p>Only darkness.</p>
+
+<p>Then something inside the darkness whispered:</p>
+
+<p>“Aanya.”</p>
+
+<p>Nyla's phone rang.</p>
+
+<p>Aanya.</p>
+
 <div class="dialogue">
-<div class="name">NYLA · PHONE</div>
-<p>“If you can hear me, you're already too late.”</p>
+    <div class="name">AANYA</div>
+    <p>“Do not answer it.”</p>
 </div>
-<p>Nyla stared at the screen.</p>
-<p>“Who are you?”</p>
+
+<p>The phone kept ringing.</p>
+
+<p>Once.</p>
+<p>Twice.</p>
+<p>Three times.</p>
+
+<p>Then the caller name changed.</p>
+
+<div class="big-line">NYLA</div>
+
+<p>Nyla answered.</p>
+
 <div class="dialogue">
-<div class="name">NYLA · PHONE</div>
-<p>“You.”</p>
-<p>“No.”</p>
-<div class="dialogue">
-<div class="name">NYLA · PHONE</div>
-<p>“That's what I said too.”</p>
+    <div class="name">NYLA · PHONE</div>
+    <p>“You shouldn't have opened the closet.”</p>
 </div>
-<p>A door opened behind her.</p>
-<p>Older Nyla stepped out.</p>
-<p>Same face.</p>
-<p>Same scar.</p>
-<p>Same silver ring.</p>
-<p>But her fingernails were broken.</p>
-<p>There was dried blood under them.</p>
-<p>Older Nyla looked at the doors.</p>
+
+<p>She dropped the phone.</p>
+
+<p>From inside the closet, something laughed.</p>
+
+<p>Aanya's voice came through the bedroom door.</p>
+
 <div class="dialogue">
-<div class="name">OTHER NYLA</div>
-<p>“How many knocks did you hear?”</p>
+    <div class="name">AANYA</div>
+    <p>“Nyla. Open the door.”</p>
 </div>
-<p>“Three.”</p>
-<p>Older Nyla closed her eyes.</p>
-<div class="dialogue">
-<div class="name">OTHER NYLA</div>
-<p>“Good.”</p>
-</div>
-<p>“Good?”</p>
-<div class="dialogue">
-<div class="name">OTHER NYLA</div>
-<p>“The fourth one means it has found you.”</p>
-</div>
+
+<p>Nyla stared at the handle.</p>
+
+<p>“You're already inside,” she whispered.</p>
+
 <p>Silence.</p>
-<p>Then—</p>
-<p>Knock.</p>
-<p>Nyla's face went cold.</p>
-<p>Knock.</p>
-<p>Older Nyla grabbed her arm.</p>
-<p>“Don't count.”</p>
-<p>Knock.</p>
-<p>Nyla covered her ears.</p>
-<p>Something whispered from the hallway:</p>
-<p>“Four.”</p>
-<p>Every light went out.</p>
-<p>When they returned, there were two Aanyas.</p>
-<p>One stood beside Nyla.</p>
-<p>One stood at the far end of the hallway.</p>
-<p>Both were crying.</p>
-<div class="dialogue">
-<div class="name">AANYA</div>
-<p>“Nyla, come here.”</p>
-</div>
-<div class="dialogue">
-<div class="name">AANYA</div>
-<p>“Nyla, don't.”</p>
-</div>
-<p>Older Nyla whispered:</p>
-<p>“Neither one is lying.”</p>
-<p>Nyla looked at her.</p>
-<p>“What does that mean?”</p>
-<div class="dialogue">
-<div class="name">OTHER NYLA</div>
-<p>“The loop doesn't make copies.”</p>
-<p>“It makes survivors.”</p>
-</div>
-<p>Nyla looked at the two Aanyas.</p>
-<p>“Survivors of what?”</p>
-<p>Older Nyla pointed at the scratched photograph.</p>
-<p>“Her.”</p>
-<p>The photograph trembled in Nyla's hand.</p>
-<p>The scratched face was changing.</p>
-<p>Slowly.</p>
-<p>Not being restored.</p>
-<p>Being rewritten.</p>
-<p>Two eyes appeared first.</p>
-<p>Then a mouth.</p>
-<p>The mouth was smiling.</p>
-<p>Older Nyla snatched the photograph away.</p>
-<div class="dialogue">
-<div class="name">OTHER NYLA</div>
-<p>“Don't let it finish.”</p>
-</div>
-<p>“Who is she?”</p>
-<p>Older Nyla stared at Nyla.</p>
-<p>“The girl you promised you would save.”</p>
-<p>“I don't remember her.”</p>
-<p>“I know.”</p>
-<p>Older Nyla's voice cracked.</p>
-<p>“That's why she's angry.”</p>
+
+<p>Then Aanya said:</p>
+
+<p>“Not this time.”</p>
+
+<p>The hallway lights went out.</p>
+
+<p>Every light in the apartment went out with them.</p>
+
+<p>In the darkness, Nyla heard someone walking behind her.</p>
+
+<p>Not toward her.</p>
+
+<p>Away from her.</p>
+
+<p>Into the bedroom.</p>
+
+<p>She turned.</p>
+
+<p>The wardrobe was six inches away from the wall.</p>
+
+<p>She had never moved it.</p>
+
+<p>She knew that.</p>
+
+<p>She also knew what was behind it.</p>
+
+<p>That was the part that terrified her.</p>
+
+<p>Nyla pushed the wardrobe aside.</p>
+
+<p>A narrow door waited behind it.</p>
+
+<p>Painted on the door:</p>
+
+<div class="big-line">317</div>
+
+<p>Underneath:</p>
+
+<p><strong>DO NOT KNOCK.</strong></p>
+
+<p>Nyla reached for the handle.</p>
+
 <div class="chat">
-<div class="chat-header">@NYLA.JPG · 12 NEW MESSAGES</div>
-<div class="message dark">don't choose aanya</div>
-<div class="message dark">don't choose the other aanya</div>
-<div class="message dark">don't choose yourself</div>
-<div class="message dark">remember the girl behind the photograph</div>
-<div class="message dark">before 3:17 chooses for you</div>
+
+    <div class="chat-header">
+        @NYLA.JPG
+    </div>
+
+    <div class="message dark">
+        you always knock
+    </div>
+
+    <div class="message right">
+        who are you?
+    </div>
+
+    <div class="message dark">
+        the version that didn't
+    </div>
+
 </div>
-<p>The clock changed.</p>
-<p>3:16.</p>
-<p>Every person in the hallway looked at it.</p>
-<p>Then the scratched girl spoke from inside the photograph.</p>
-<p>“Nyla.”</p>
-<p>Nyla stopped breathing.</p>
-<p>“You said you'd come back.”</p>
-<p>The photograph went black.</p>
-<p>Something knocked from inside the screen.</p>
-</div></main>
-<section class="ending"><p>For the first time, Nyla understood the rule. The loop wasn't trying to keep her inside. It was trying to make her choose who deserved to get out.</p></section>
-<footer><div>3:17</div><div>A STORY ABOUT WHAT HAPPENS WHEN YOUR PHONE KNOWS YOU BETTER THAN YOU DO.</div></footer>
+
+<p>Nyla opened the door.</p>
+
+<p>A hallway stretched into darkness.</p>
+
+<p>It was far longer than her apartment.</p>
+
+<p>Doors lined both sides.</p>
+
+<p>Every door had the same number.</p>
+
+<p>3:17.</p>
+
+<p>Some doors were scratched from the inside.</p>
+
+<p>One was wet.</p>
+
+<p>One had fingerprints pressed into the paint.</p>
+
+<p>Small fingerprints.</p>
+
+<p>Child-sized.</p>
+
+<p>At the far end stood Aanya.</p>
+
+<p>She looked exhausted.</p>
+
+<p>Older than she should have been.</p>
+
+<p>“You finally found it,” she said.</p>
+
+<div class="dialogue">
+
+    <div class="name">NYLA</div>
+
+    <p>“Found what?”</p>
+
+</div>
+
+<div class="dialogue">
+
+    <div class="name">AANYA</div>
+
+    <p>
+        “The place where the night keeps the people
+        it doesn't know what to do with.”
+    </p>
+
+</div>
+
+<p>Nyla looked at the doors.</p>
+
+<p>Behind one of them, someone began crying.</p>
+
+<p>Behind another, someone whispered her name.</p>
+
+<p>Behind a third, there was knocking.</p>
+
+<p>Three slow knocks.</p>
+
+<p>Then a voice said:</p>
+
+<p>“Nyla, please.”</p>
+
+<p>Aanya grabbed her wrist.</p>
+
+<div class="dialogue">
+
+    <div class="name">AANYA</div>
+
+    <p>“Don't answer any door.”</p>
+
+</div>
+
+<p>“Why?”</p>
+
+<p>Aanya looked at her.</p>
+
+<p>“Because I did.”</p>
+
+<p>She opened her hand.</p>
+
+<p>In her palm was a photograph.</p>
+
+<p>Three girls sat on a library floor.</p>
+
+<p>Nyla.</p>
+
+<p>Aanya.</p>
+
+<p>And a third girl.</p>
+
+<p>The third girl's face had been scratched away
+so violently the paper had torn.</p>
+
+<p>On the back, in Nyla's handwriting:</p>
+
+<div class="big-line">
+    SHE WAS HERE FIRST.
+</div>
+
+<p>Nyla felt a memory push against the inside of her skull.</p>
+
+<p>A red backpack.</p>
+
+<p>Cheap headphones.</p>
+
+<p>A girl laughing because Nyla had spilled coffee on her notes.</p>
+
+<p>A name.</p>
+
+<p>Almost.</p>
+
+<p>Almost.</p>
+
+<p>Then the hallway lights flickered.</p>
+
+<p>Every door opened one inch.</p>
+
+<p>Every voice stopped.</p>
+
+<p>And from every room, in perfect unison:</p>
+
+<div class="big-line">
+    “Remember me.”
+</div>
+
+<p>Nyla's phone displayed one new message.</p>
+
+<div class="chat">
+
+    <div class="chat-header">
+        @NYLA.JPG
+    </div>
+
+    <div class="message dark">
+        3:17 isn't the time
+    </div>
+
+    <div class="message dark">
+        it's the door remembering you
+    </div>
+
+</div>
+
+</main>
+
+<section class="ending">
+
+<div class="ending-inner">
+
+    <div class="ending-label">
+        END OF CHAPTER 04
+    </div>
+
+    <h2>
+        The door<br>
+        remembered her.
+    </h2>
+
+    <div class="final-message">
+
+        <p>
+            The hallway was not beneath the apartment.
+        </p>
+
+        <p>
+            It was beneath the memory of it.
+        </p>
+
+        <p>
+            And something in there had just remembered Nyla's name.
+        </p>
+
+        <p>
+            Then, from somewhere behind the nearest door,
+            came one quiet knock.
+        </p>
+
+    </div>
+
+    <div class="chapter-navigation">
+
+        <a href="chapter3.html" class="nav-button">
+            ← CHAPTER 03
+        </a>
+
+        <a href="chapter5.html" class="nav-button">
+            CHAPTER 05 · THE OTHER NYLA →
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+<footer>
+
+    <div>3:17</div>
+
+    <div>
+        A STORY ABOUT WHAT HAPPENS WHEN YOUR PHONE
+        KNOWS YOU BETTER THAN YOU DO.
+    </div>
+
+</footer>
+
 <script>
-window.addEventListener("scroll",()=>{
- const top=window.scrollY;
- const height=document.documentElement.scrollHeight-window.innerHeight;
- document.getElementById("progressBar").style.width=((top/height)*100)+"%";
+
+window.addEventListener("scroll", () => {
+
+    const top = window.scrollY;
+
+    const height =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const percentage =
+        height > 0 ? (top / height) * 100 : 0;
+
+    document.getElementById("progressBar").style.width =
+        percentage + "%";
+
 });
+
 </script>
-</body></html>
+
+</body>
+</html>
